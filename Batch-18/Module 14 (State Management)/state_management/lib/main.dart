@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:state_management/with_provider/counter_model.dart';
 import 'package:state_management/without_provider/home_screen.dart';
 
 void main() {
@@ -11,10 +13,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: HomeScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => CounterModel(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+        home: HomeScreen(),
+      ),
     );
   }
 }

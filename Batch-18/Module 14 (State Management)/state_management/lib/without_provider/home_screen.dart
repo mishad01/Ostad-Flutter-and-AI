@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_management/with_provider/provider_counter_screen.dart';
 import 'package:state_management/without_provider/set_state_counter_Screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,7 +28,17 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text('Without Provider (SetState)'),
             ),
-            ElevatedButton(onPressed: () {}, child: Text('Click Me')),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProviderCounterScreen(),
+                  ),
+                );
+              },
+              child: Text('With Provider'),
+            ),
           ],
         ),
       ),
