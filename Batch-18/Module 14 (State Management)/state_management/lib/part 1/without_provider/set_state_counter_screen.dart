@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/without_provider/second_set_state_screen.dart';
+import 'package:state_management/part%201/without_provider/second_set_state_screen.dart';
 
 class SetStateCounterScreen extends StatefulWidget {
   const SetStateCounterScreen({super.key});

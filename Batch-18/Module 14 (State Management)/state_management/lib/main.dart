@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management/with_provider/counter_model.dart';
-import 'package:state_management/without_provider/home_screen.dart';
+import 'package:state_management/part%201/with_provider/counter_model.dart';
+import 'package:state_management/part%201/without_provider/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

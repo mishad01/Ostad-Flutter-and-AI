@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/with_provider/provider_counter_screen.dart';
-import 'package:state_management/without_provider/set_state_counter_Screen.dart';
+import 'package:state_management/part%201/with_provider/provider_counter_screen.dart';
+import 'package:state_management/part%201/without_provider/set_state_counter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
