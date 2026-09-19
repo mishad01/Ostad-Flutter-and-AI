@@ -3,6 +3,7 @@ import 'package:state_management/part%201/with_provider/provider_counter_screen.
 import 'package:state_management/part%201/without_provider/set_state_counter_screen.dart';
 import 'package:state_management/part%202/consumer/watch_counter_screen.dart';
 import 'package:state_management/part%202/lifecycle/clock_screen.dart';
+import 'package:state_management/part%203/task_manager/task_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,7 +46,7 @@ class HomeScreen extends StatelessWidget {
             },
             child: const Text('Open setState screen'),
           ),
-          const SizedBox(height: 32),dcf
+          const SizedBox(height: 32),
           const _SectionTitle('Part 2 — Advanced Provider'),
           const SizedBox(height: 12),
           ElevatedButton(
@@ -70,6 +71,15 @@ class HomeScreen extends StatelessWidget {
             child: const Text('2. Lifecycle and dispose'),
           ),
           const SizedBox(height: 12),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TaskScreen()),
+              );
+            },
+            child: const Text('3. Task Manager'),
+          ),
         ],
       ),
     );
