@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "317799430417",
+    "project_id": "ostad-batch-18",
+    "storage_bucket": "ostad-batch-18.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317799430417:android:5959ded4531cff3c6c34b0",
+        "android_client_info": {
+          "package_name": "com.example.live_score_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjVzG-cVIKPsK2b7AMNgrDX7eP6tPbjIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
