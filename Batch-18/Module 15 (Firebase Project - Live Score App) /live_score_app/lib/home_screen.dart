@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:live_score_app/part%201/firebase_status_screen.dart';
+import 'package:live_score_app/part%202/student_live_screen.dart';
 import 'package:live_score_app/part%202/write_data_screen.dart';
+import 'package:live_score_app/part%203%20crud/notes_screen.dart';
 
 import 'app_startup.dart';
 
@@ -27,6 +29,13 @@ class HomeScreen extends StatelessWidget {
             label: '1. Write data — add() vs set()',
             screen: WriteDataScreen(),
           ),
+          const _DemoButton(
+            label: '2. Read data — get() vs onSnapshot()',
+            screen: StudentLiveScreen(),
+          ),
+
+          const _SectionTitle('Part 3 — CRUD Operations'),
+          const _DemoButton(label: '1. Notes CRUD', screen: NotesScreen()),
         ],
       ),
     );

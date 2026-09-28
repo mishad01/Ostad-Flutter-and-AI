@@ -17,7 +17,6 @@ class WriteDataScreen extends StatelessWidget {
       print('Firestore write success');
     } catch (e, st) {
       print('Firestore write failed: $e');
-      print(st);
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -29,7 +28,7 @@ class WriteDataScreen extends StatelessWidget {
   Future<void> setStudents(BuildContext context) async {
     await FirebaseFirestore.instance.collection('students').doc('abir').set({
       'name': 'Abir Rahaman',
-      'age': 20,
+      'age': 21,
       'isActive': true,
       'subjects': ['Math', 'English'],
       'createdAt': DateTime.now(),
