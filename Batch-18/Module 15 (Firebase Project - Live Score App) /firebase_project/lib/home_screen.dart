@@ -1,3 +1,4 @@
+import 'package:firebase_project/part%204/auth_gate.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_project/part%201/firebase_status_screen.dart';
 import 'package:firebase_project/part%202/student_live_screen.dart';
@@ -33,9 +34,16 @@ class HomeScreen extends StatelessWidget {
             label: '2. Read data — get() vs onSnapshot()',
             screen: StudentLiveScreen(),
           ),
-
           const _SectionTitle('Part 3 — CRUD Operations'),
-          const _DemoButton(label: '1. Notes CRUD', screen: NotesScreen()),
+          const _DemoButton(
+            label: '1. Notes CRUD (model + service)',
+            screen: NotesScreen(),
+          ),
+          const _SectionTitle('Part 4 — Login with Email/Google'),
+          const _DemoButton(
+            label: '1. Login with Email/Google',
+            screen: AuthGate(),
+          ),
         ],
       ),
     );

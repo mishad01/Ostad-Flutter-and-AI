@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_project/app_startup.dart';
 import 'package:firebase_project/home_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -14,6 +15,14 @@ void main() async {
     AppStartup.firebaseReady = true;
   } catch (e) {
     AppStartup.firebaseError = e.toString();
+  }
+
+  if (AppStartup.firebaseReady) {
+    try {
+      await GoogleSignIn.instance.initialize();
+    } catch (e) {
+      debugPrint('Google Sign In not configured $e');
+    }
   }
 
   runApp(const MyApp());
