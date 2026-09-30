@@ -62,6 +62,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '317799430417',
     projectId: 'ostad-batch-18',
     storageBucket: 'ostad-batch-18.firebasestorage.app',
+    androidClientId: '317799430417-7elmd7aopna81brq33n8geflhg88gct9.apps.googleusercontent.com',
+    iosClientId: '317799430417-j61dsv5k6ct0o5c7fqq8lvgilv3c0v84.apps.googleusercontent.com',
     iosBundleId: 'com.example.liveScoreApp',
   );
 }

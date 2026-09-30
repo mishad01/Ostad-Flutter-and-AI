@@ -12,7 +12,20 @@
           "package_name": "com.example.live_score_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "317799430417-7elmd7aopna81brq33n8geflhg88gct9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.live_score_app",
+            "certificate_hash": "cc40d93f224756b18992b1950c31a715c7e7df3a"
+          }
+        },
+        {
+          "client_id": "317799430417-gfo10kc9eonckss86mtq079a4vlh3ck1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAjVzG-cVIKPsK2b7AMNgrDX7eP6tPbjIg"
@@ -20,7 +33,63 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317799430417-gfo10kc9eonckss86mtq079a4vlh3ck1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "317799430417-co4rekkkj30uohinkmckdrdoec83c87n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.testFb"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317799430417:android:469adf04720891b26c34b0",
+        "android_client_info": {
+          "package_name": "com.example.test_fb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317799430417-kq5omriim0d617jfn9f1lupo9s6sfh1l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.test_fb",
+            "certificate_hash": "cc40d93f224756b18992b1950c31a715c7e7df3a"
+          }
+        },
+        {
+          "client_id": "317799430417-gfo10kc9eonckss86mtq079a4vlh3ck1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjVzG-cVIKPsK2b7AMNgrDX7eP6tPbjIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317799430417-gfo10kc9eonckss86mtq079a4vlh3ck1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "317799430417-co4rekkkj30uohinkmckdrdoec83c87n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.testFb"
+              }
+            }
+          ]
         }
       }
     }
