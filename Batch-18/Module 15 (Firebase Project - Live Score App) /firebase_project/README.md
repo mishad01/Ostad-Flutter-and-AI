@@ -1,4 +1,4 @@
-# live_score_app
+# firebase_project
 
 A new Flutter project.
 
