@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:live_score_app/part%203%20crud/model/note.dart';
+import 'package:firebase_project/part%203%20crud/model/note.dart';
 
 class NoteDialog extends StatefulWidget {
   const NoteDialog({super.key, this.note});

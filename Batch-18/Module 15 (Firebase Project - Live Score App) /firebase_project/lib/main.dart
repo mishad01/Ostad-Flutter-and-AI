@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:live_score_app/app_startup.dart';
-import 'package:live_score_app/home_screen.dart';
+import 'package:firebase_project/app_startup.dart';
+import 'package:firebase_project/home_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {

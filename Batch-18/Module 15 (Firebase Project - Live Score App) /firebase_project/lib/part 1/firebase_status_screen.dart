@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:live_score_app/app_startup.dart';
+import 'package:firebase_project/app_startup.dart';
 
 class FirebaseStatusScreen extends StatelessWidget {
   const FirebaseStatusScreen({super.key});

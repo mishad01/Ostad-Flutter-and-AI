@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:live_score_app/part%203%20crud/model/note.dart';
-import 'package:live_score_app/part%203%20crud/note_dialog.dart';
-import 'package:live_score_app/part%203%20crud/service/note_service.dart';
+import 'package:firebase_project/part%203%20crud/model/note.dart';
+import 'package:firebase_project/part%203%20crud/note_dialog.dart';
+import 'package:firebase_project/part%203%20crud/service/note_service.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});

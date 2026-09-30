@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:live_score_app/part%203%20crud/model/note.dart';
+import 'package:firebase_project/part%203%20crud/model/note.dart';
 
 class NoteService {
   final CollectionReference<Map<String, dynamic>> _notes = FirebaseFirestore

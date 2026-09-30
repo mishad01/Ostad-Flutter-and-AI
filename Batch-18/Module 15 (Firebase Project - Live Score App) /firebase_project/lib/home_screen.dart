@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:live_score_app/part%201/firebase_status_screen.dart';
-import 'package:live_score_app/part%202/student_live_screen.dart';
-import 'package:live_score_app/part%202/write_data_screen.dart';
-import 'package:live_score_app/part%203%20crud/notes_screen.dart';
+import 'package:firebase_project/part%201/firebase_status_screen.dart';
+import 'package:firebase_project/part%202/student_live_screen.dart';
+import 'package:firebase_project/part%202/write_data_screen.dart';
+import 'package:firebase_project/part%203%20crud/notes_screen.dart';
 
 import 'app_startup.dart';
 
