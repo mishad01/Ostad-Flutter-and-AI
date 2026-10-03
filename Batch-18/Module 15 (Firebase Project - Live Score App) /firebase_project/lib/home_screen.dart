@@ -1,4 +1,5 @@
 import 'package:firebase_project/part%204/auth_gate.dart';
+import 'package:firebase_project/part%205/notification_lab_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_project/part%201/firebase_status_screen.dart';
 import 'package:firebase_project/part%202/student_live_screen.dart';
@@ -43,6 +44,11 @@ class HomeScreen extends StatelessWidget {
           const _DemoButton(
             label: '1. Login with Email/Google',
             screen: AuthGate(),
+          ),
+          const _SectionTitle('Part 5 — Notification Lab'),
+          const _DemoButton(
+            label: '1. Notification Lab',
+            screen: NotificationLabScreen(),
           ),
         ],
       ),

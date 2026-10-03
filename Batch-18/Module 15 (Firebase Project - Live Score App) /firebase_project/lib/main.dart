@@ -1,3 +1,5 @@
+import 'package:firebase_project/app_navigator.dart';
+import 'package:firebase_project/part%205/service/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_project/app_startup.dart';
@@ -16,6 +18,8 @@ void main() async {
   } catch (e) {
     AppStartup.firebaseError = e.toString();
   }
+
+  await NotificationService.init();
 
   if (AppStartup.firebaseReady) {
     try {
@@ -37,6 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       home: const HomeScreen(),
+      navigatorKey: AppNavigator.key,
     );
   }
 }
