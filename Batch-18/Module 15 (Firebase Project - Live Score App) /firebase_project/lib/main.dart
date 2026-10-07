@@ -1,5 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_project/app_navigator.dart';
 import 'package:firebase_project/part%205/service/notification_service.dart';
+import 'package:firebase_project/part%206/service/push_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_project/app_startup.dart';
@@ -22,6 +24,8 @@ void main() async {
   await NotificationService.init();
 
   if (AppStartup.firebaseReady) {
+    //FirebaseMessaging.onBackgroundMessage(fire)
+    await PushService.init();
     try {
       await GoogleSignIn.instance.initialize();
     } catch (e) {
