@@ -4,6 +4,7 @@
 // demo screen, exactly like you already know from earlier classes.
 
 import 'package:flutter/material.dart';
+import 'package:google_map_app/part1_info_gestures/info_windows_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,10 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Flutter + Google Maps Class')),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-        children: const [_SectionTitle('Part 1 — Info Windows, Gestures')],
+        children: const [
+          _SectionTitle('Part 1 — Info Windows, Gestures'),
+          _DemoButton(label: 'Info Windows', screen: InfoWindowsScreen()),
+        ],
       ),
     );
   }
