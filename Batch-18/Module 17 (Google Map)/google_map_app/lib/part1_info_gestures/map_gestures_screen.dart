@@ -35,8 +35,34 @@ class _MapGesturesScreenState extends State<MapGesturesScreen> {
     _camera.dispose();
   }
 
-  void x() {}
-  void y() {}
+  void _goToHatirjheel() {
+    _map?.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: Places.parliament.position,
+          zoom: 16,
+          tilt: 50,
+          bearing: 45,
+        ),
+      ),
+    );
+  }
+
+  void _resetNorth() {
+    _map?.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(target: _camera.value.target, zoom: 12),
+      ),
+    );
+  }
+
+  void _zoomIn() {
+    _map?.animateCamera(CameraUpdate.zoomIn());
+  }
+
+  void _zoomOut() {
+    _map?.animateCamera(CameraUpdate.zoomOut());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +140,24 @@ class _MapGesturesScreenState extends State<MapGesturesScreen> {
                 ),
               ],
             ),
+          ),
+          Wrap(
+            spacing: 8,
+            children: [
+              OutlinedButton(
+                onPressed: _goToHatirjheel,
+                child: const Text('Go to Hatirjheel'),
+              ),
+              OutlinedButton(
+                onPressed: _resetNorth,
+                child: const Text('Reset North'),
+              ),
+              OutlinedButton(onPressed: _zoomIn, child: const Text('Zoom In')),
+              OutlinedButton(
+                onPressed: _zoomOut,
+                child: const Text('Zoom Out'),
+              ),
+            ],
           ),
         ],
       ),
