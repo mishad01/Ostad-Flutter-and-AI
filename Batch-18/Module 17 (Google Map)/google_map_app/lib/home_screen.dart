@@ -4,7 +4,9 @@
 // demo screen, exactly like you already know from earlier classes.
 
 import 'package:flutter/material.dart';
+import 'package:google_map_app/part1_info_gestures/gps_screen.dart';
 import 'package:google_map_app/part1_info_gestures/info_windows_screen.dart';
+import 'package:google_map_app/part1_info_gestures/map_gestures_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,6 +20,8 @@ class HomeScreen extends StatelessWidget {
         children: const [
           _SectionTitle('Part 1 — Info Windows, Gestures'),
           _DemoButton(label: 'Info Windows', screen: InfoWindowsScreen()),
+          _DemoButton(label: 'Map Gestures', screen: MapGesturesScreen()),
+          _DemoButton(label: 'GPS', screen: GpsScreen()),
         ],
       ),
     );
