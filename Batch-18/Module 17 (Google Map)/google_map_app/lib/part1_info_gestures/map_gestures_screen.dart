@@ -39,7 +39,7 @@ class _MapGesturesScreenState extends State<MapGesturesScreen> {
     _map?.animateCamera(
       CameraUpdate.newCameraPosition(
         CameraPosition(
-          target: Places.parliament.position,
+          target: Places.hatirjheel.position,
           zoom: 16,
           tilt: 50,
           bearing: 45,
