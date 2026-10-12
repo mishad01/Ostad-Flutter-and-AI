@@ -103,7 +103,7 @@ class _GpsScreenState extends State<GpsScreen> {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: _busy ? null : _findMe,
-              child: const Text('Find me'),
+              child: Text(_busy ? 'Finding...' : 'Find me'),
             ),
           ),
         ],
