@@ -8,6 +8,7 @@ import 'package:google_map_app/part1_info_gestures/gps_screen.dart';
 import 'package:google_map_app/part1_info_gestures/info_windows_screen.dart';
 import 'package:google_map_app/part1_info_gestures/map_gestures_screen.dart';
 import 'package:google_map_app/part2_permission_realtime/permission_screen.dart';
+import 'package:google_map_app/part3_maps_makers_polylines/polylines_Screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,12 +20,14 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
         children: const [
-          _SectionTitle('Part 1 — Info Windows, Gestures'),
+          _SectionTitle('Info Windows, Gestures'),
           _DemoButton(label: 'Info Windows', screen: InfoWindowsScreen()),
           _DemoButton(label: 'Map Gestures', screen: MapGesturesScreen()),
           _DemoButton(label: 'GPS', screen: GpsScreen()),
-          _SectionTitle('Part 2 — Permissions, Realtime'),
+          _SectionTitle('Permissions, Realtime'),
           _DemoButton(label: 'Permissions', screen: PermissionScreen()),
+          _SectionTitle('Google Maps'),
+          _DemoButton(label: 'Polylines', screen: PolylinesScreen()),
         ],
       ),
     );
