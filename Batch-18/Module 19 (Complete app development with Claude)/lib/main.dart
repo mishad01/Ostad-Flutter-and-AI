@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'core/app_colors.dart';
 import 'core/app_strings.dart';
-import 'presentation/features/splash/view/splash_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: const SplashPage(),
+      home: const Scaffold(),
     );
   }
 }
