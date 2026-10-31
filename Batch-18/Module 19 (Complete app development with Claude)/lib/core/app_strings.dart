@@ -115,4 +115,11 @@ class AppStrings {
   static const String jumpingJacksImageUrl = 'https://picsum.photos/seed/jumping-jacks/200/200';
   static const String squatsImageUrl = 'https://picsum.photos/seed/squats/200/200';
   static const String gluteBridgeImageUrl = 'https://picsum.photos/seed/glute-bridge/200/200';
+
+  // Network
+  static const String apiBaseUrl = 'https://wger.de/api/v2';
+  static const String networkTimeoutError = 'The request timed out. Please try again.';
+  static const String networkNoInternetError = 'No internet connection.';
+  static const String networkUnexpectedError = 'Something went wrong. Please try again.';
+  static const String networkServerError = 'Server error';
 }
