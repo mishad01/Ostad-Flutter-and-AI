@@ -22,6 +22,12 @@ class ExerciseService {
     return _results(json).map((e) => ExerciseModel.fromJson(e)).toList();
   }
 
+  /// Exercises with names and images, optionally filtered by category.
+  Future<List<ExerciseInfo>> getExerciseInfoList({int? categoryId, int limit = 20}) async {
+    final json = await _get(ApiUrls.exerciseInfoList(categoryId: categoryId, limit: limit));
+    return _results(json).map((e) => ExerciseInfoModel.fromJson(e)).toList();
+  }
+
   Future<ExerciseInfo> getExerciseInfo(int id) async {
     final json = await _get(ApiUrls.exerciseInfo(id));
     return ExerciseInfoModel.fromJson(json);
