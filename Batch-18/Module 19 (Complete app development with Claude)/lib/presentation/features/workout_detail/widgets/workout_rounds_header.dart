@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/app_strings.dart';
 
 class WorkoutRoundsHeader extends StatelessWidget {
-  const WorkoutRoundsHeader({super.key, required this.current, required this.total});
+  const WorkoutRoundsHeader({
+    super.key,
+    required this.current,
+    required this.total,
+  });
 
   final int current;
   final int total;
@@ -17,7 +21,11 @@ class WorkoutRoundsHeader extends StatelessWidget {
       children: [
         const Text(
           AppStrings.rounds,
-          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         Text.rich(
           TextSpan(

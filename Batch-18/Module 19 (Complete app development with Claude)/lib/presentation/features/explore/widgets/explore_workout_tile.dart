@@ -24,13 +24,21 @@ class ExploreWorkoutTile extends StatelessWidget {
     return Container(
       width: 194,
       padding: const EdgeInsets.all(7),
-      decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(12)),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(imageUrl, width: 72, height: 72, fit: BoxFit.cover),
+            child: Image.network(
+              imageUrl,
+              width: 72,
+              height: 72,
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(width: 8),
           Expanded(

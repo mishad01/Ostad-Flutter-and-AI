@@ -25,7 +25,10 @@ class TodayPlanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Stack(
         children: [
           Row(
@@ -33,7 +36,12 @@ class TodayPlanCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.network(imageUrl, width: 80, height: 90, fit: BoxFit.cover),
+                child: Image.network(
+                  imageUrl,
+                  width: 80,
+                  height: 90,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -52,7 +60,10 @@ class TodayPlanCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: const TextStyle(fontSize: 14, color: AppColors.textSecondary),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                     const SizedBox(height: 12),
                     _ProgressBar(progress: progress),

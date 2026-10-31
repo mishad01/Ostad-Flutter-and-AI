@@ -25,7 +25,10 @@ class StepsCard extends StatelessWidget {
             iconBackground: AppColors.stepsIconBg,
           ),
           const SizedBox(height: 14),
-          Text('$steps/$goal', style: const TextStyle(fontSize: 13, color: AppColors.textPrimary)),
+          Text(
+            '$steps/$goal',
+            style: const TextStyle(fontSize: 13, color: AppColors.textPrimary),
+          ),
           const SizedBox(height: 8),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),

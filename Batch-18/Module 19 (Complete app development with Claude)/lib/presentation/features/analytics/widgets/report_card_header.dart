@@ -25,7 +25,10 @@ class ReportCardHeader extends StatelessWidget {
         Container(
           width: 32,
           height: 32,
-          decoration: BoxDecoration(color: iconBackground, borderRadius: BorderRadius.circular(8)),
+          decoration: BoxDecoration(
+            color: iconBackground,
+            borderRadius: BorderRadius.circular(8),
+          ),
           child: Icon(icon, size: 20, color: iconColor),
         ),
         const SizedBox(width: 12),
@@ -33,7 +36,11 @@ class ReportCardHeader extends StatelessWidget {
           child: Text(
             title,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: titleColor),
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: titleColor,
+            ),
           ),
         ),
       ],

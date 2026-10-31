@@ -28,7 +28,10 @@ class OnboardingHeroImage extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [AppColors.background.withAlpha(0), AppColors.background],
+                colors: [
+                  AppColors.background.withAlpha(0),
+                  AppColors.background,
+                ],
               ),
             ),
           ),

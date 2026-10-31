@@ -10,7 +10,10 @@ class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
   void _onGetStarted(BuildContext context) {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomePage()));
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const HomePage()),
+    );
   }
 
   @override
@@ -52,7 +55,10 @@ class OnboardingPage extends StatelessWidget {
                     const Text(
                       AppStrings.onboardingSubtitle,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 15, color: AppColors.textSecondary),
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     const OnboardingProgressIndicator(),
@@ -65,11 +71,16 @@ class OnboardingPage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.cardDark,
                           foregroundColor: AppColors.textOnPrimary,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28),
+                          ),
                         ),
                         child: const Text(
                           AppStrings.getStarted,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),

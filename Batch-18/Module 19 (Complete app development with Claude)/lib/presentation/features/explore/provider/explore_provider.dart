@@ -57,7 +57,9 @@ class ExploreProvider extends ChangeNotifier {
   }
 
   Future<List<ExerciseInfo>> _loadWorkouts(int? categoryId) async {
-    final exercises = await _service.getExerciseInfoList(categoryId: categoryId);
+    final exercises = await _service.getExerciseInfoList(
+      categoryId: categoryId,
+    );
     return exercises.where((e) => e.images.isNotEmpty).toList();
   }
 }

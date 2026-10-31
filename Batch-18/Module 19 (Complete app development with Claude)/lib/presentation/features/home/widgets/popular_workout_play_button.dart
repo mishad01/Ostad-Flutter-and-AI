@@ -14,8 +14,15 @@ class _PlayButton extends StatelessWidget {
       child: Container(
         width: 44,
         height: 44,
-        decoration: const BoxDecoration(color: AppColors.accent, shape: BoxShape.circle),
-        child: const Icon(Icons.play_arrow_rounded, color: AppColors.cardDark, size: 26),
+        decoration: const BoxDecoration(
+          color: AppColors.accent,
+          shape: BoxShape.circle,
+        ),
+        child: const Icon(
+          Icons.play_arrow_rounded,
+          color: AppColors.cardDark,
+          size: 26,
+        ),
       ),
     );
   }

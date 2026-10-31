@@ -29,7 +29,10 @@ class CyclingCard extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: const CustomPaint(size: Size.infinite, painter: _RouteMapPainter()),
+              child: const CustomPaint(
+                size: Size.infinite,
+                painter: _RouteMapPainter(),
+              ),
             ),
           ),
         ],
@@ -42,7 +45,13 @@ class _RouteMapPainter extends CustomPainter {
   const _RouteMapPainter();
 
   // Fractions of the map size, so the map scales with the card.
-  static const _columns = [(0.0, 0.14), (0.18, 0.38), (0.42, 0.6), (0.64, 0.78), (0.82, 1.0)];
+  static const _columns = [
+    (0.0, 0.14),
+    (0.18, 0.38),
+    (0.42, 0.6),
+    (0.64, 0.78),
+    (0.82, 1.0),
+  ];
   static const _rows = [(0.0, 0.26), (0.32, 0.6), (0.66, 1.0)];
   static const _route = [
     Offset(0.02, 0.48),
@@ -73,7 +82,8 @@ class _RouteMapPainter extends CustomPainter {
       }
     }
 
-    final route = Path()..moveTo(_route.first.dx * size.width, _route.first.dy * size.height);
+    final route = Path()
+      ..moveTo(_route.first.dx * size.width, _route.first.dy * size.height);
     for (final point in _route.skip(1)) {
       route.lineTo(point.dx * size.width, point.dy * size.height);
     }

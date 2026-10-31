@@ -18,6 +18,7 @@ class WorkoutDetailProvider extends ChangeNotifier {
   String get errorMessage => _errorMessage;
 
   Future<void> fetchExercise(int id) async {
+    _exercise = null;
     _isLoading = true;
     notifyListeners();
     try {

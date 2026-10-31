@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_strings.dart';
+import '../../../core/async_placeholder.dart';
 import '../../../core/section_title.dart';
 import '../../../dummy_data/dummy_data.dart';
+import '../provider/explore_provider.dart';
 import '../ui_model/explore_workout_ui_model.dart';
 import '../widgets/challenge_card.dart';
 import '../widgets/explore_banner_card.dart';
@@ -13,8 +16,21 @@ part '../widgets/explore_page_workout_tile.dart';
 
 const _horizontalPadding = EdgeInsets.symmetric(horizontal: 20);
 
-class ExplorePage extends StatelessWidget {
+class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
+
+  @override
+  State<ExplorePage> createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      if (mounted) context.read<ExploreProvider>().fetchExplore();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,23 +56,36 @@ class ExplorePage extends StatelessWidget {
             const SizedBox(height: 16),
             SizedBox(
               height: 182,
-              child: ListView.separated(
-                padding: _horizontalPadding,
-                scrollDirection: Axis.horizontal,
-                itemCount: (DummyData.bestForYou.length / 2).ceil(),
-                separatorBuilder: (_, _) => const SizedBox(width: 16),
-                itemBuilder: (context, column) {
-                  final top = DummyData.bestForYou[column * 2];
-                  final bottomIndex = column * 2 + 1;
+              child: Consumer<ExploreProvider>(
+                builder: (context, provider, _) {
+                  final workouts = provider.workouts
+                      .map(ExploreWorkoutUiModel.fromExercise)
+                      .toList();
+                  if (workouts.isEmpty) {
+                    return AsyncPlaceholder(
+                      isLoading: provider.isLoading,
+                      errorMessage: provider.errorMessage,
+                    );
+                  }
 
-                  return Column(
-                    children: [
-                      _WorkoutTile(workout: top),
-                      if (bottomIndex < DummyData.bestForYou.length) ...[
-                        const SizedBox(height: 10),
-                        _WorkoutTile(workout: DummyData.bestForYou[bottomIndex]),
-                      ],
-                    ],
+                  return ListView.separated(
+                    padding: _horizontalPadding,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: (workouts.length / 2).ceil(),
+                    separatorBuilder: (_, _) => const SizedBox(width: 16),
+                    itemBuilder: (context, column) {
+                      final bottomIndex = column * 2 + 1;
+
+                      return Column(
+                        children: [
+                          _WorkoutTile(workout: workouts[column * 2]),
+                          if (bottomIndex < workouts.length) ...[
+                            const SizedBox(height: 10),
+                            _WorkoutTile(workout: workouts[bottomIndex]),
+                          ],
+                        ],
+                      );
+                    },
                   );
                 },
               ),
@@ -98,7 +127,8 @@ class ExplorePage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: DummyData.fastWarmup.length,
                 separatorBuilder: (_, _) => const SizedBox(width: 16),
-                itemBuilder: (context, index) => _WorkoutTile(workout: DummyData.fastWarmup[index]),
+                itemBuilder: (context, index) =>
+                    _WorkoutTile(workout: DummyData.fastWarmup[index]),
               ),
             ),
           ],

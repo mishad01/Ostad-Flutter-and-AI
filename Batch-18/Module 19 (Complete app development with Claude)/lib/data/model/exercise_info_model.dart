@@ -19,7 +19,10 @@ class ExerciseInfoModel extends ExerciseInfo {
   });
 
   factory ExerciseInfoModel.fromJson(Map<String, dynamic> json) {
-    List<T> parseList<T>(String key, T Function(Map<String, dynamic>) fromJson) {
+    List<T> parseList<T>(
+      String key,
+      T Function(Map<String, dynamic>) fromJson,
+    ) {
       return (json[key] as List? ?? [])
           .map((e) => fromJson(e as Map<String, dynamic>))
           .toList();
@@ -33,7 +36,10 @@ class ExerciseInfoModel extends ExerciseInfo {
       secondaryMuscles: parseList('muscles_secondary', MuscleModel.fromJson),
       equipment: parseList('equipment', EquipmentModel.fromJson),
       images: parseList('images', ExerciseImageModel.fromJson),
-      translations: parseList('translations', ExerciseTranslationModel.fromJson),
+      translations: parseList(
+        'translations',
+        ExerciseTranslationModel.fromJson,
+      ),
       licenseAuthor: json['license_author'] ?? '',
     );
   }

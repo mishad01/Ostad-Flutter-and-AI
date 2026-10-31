@@ -16,7 +16,11 @@ class _HeroPlaceholder extends StatelessWidget {
         ),
       ),
       child: const Center(
-        child: Icon(Icons.directions_run_rounded, size: 64, color: AppColors.accent),
+        child: Icon(
+          Icons.directions_run_rounded,
+          size: 64,
+          color: AppColors.accent,
+        ),
       ),
     );
   }

@@ -23,8 +23,13 @@ class ExerciseService {
   }
 
   /// Exercises with names and images, optionally filtered by category.
-  Future<List<ExerciseInfo>> getExerciseInfoList({int? categoryId, int limit = 20}) async {
-    final json = await _get(ApiUrls.exerciseInfoList(categoryId: categoryId, limit: limit));
+  Future<List<ExerciseInfo>> getExerciseInfoList({
+    int? categoryId,
+    int limit = 20,
+  }) async {
+    final json = await _get(
+      ApiUrls.exerciseInfoList(categoryId: categoryId, limit: limit),
+    );
     return _results(json).map((e) => ExerciseInfoModel.fromJson(e)).toList();
   }
 
@@ -35,7 +40,9 @@ class ExerciseService {
 
   Future<List<ExerciseCategory>> getCategories() async {
     final json = await _get(ApiUrls.exerciseCategories);
-    return _results(json).map((e) => ExerciseCategoryModel.fromJson(e)).toList();
+    return _results(json)
+        .map((e) => ExerciseCategoryModel.fromJson(e))
+        .toList();
   }
 
   Future<List<Equipment>> getEquipment() async {

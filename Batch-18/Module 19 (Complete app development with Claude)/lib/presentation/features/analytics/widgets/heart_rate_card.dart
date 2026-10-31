@@ -90,7 +90,10 @@ class HeartRateCard extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: Text(
                       '$bpm ${AppStrings.bpmUnit}',
-                      style: const TextStyle(fontSize: 11, color: AppColors.textPrimary),
+                      style: const TextStyle(
+                        fontSize: 11,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
                   ),
                 ],

@@ -39,7 +39,10 @@ class TrainingTimeCard extends StatelessWidget {
                   Center(
                     child: Text(
                       '${(progress * 100).round()}%',
-                      style: const TextStyle(fontSize: 14, color: AppColors.textPrimary),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
                   ),
                 ],

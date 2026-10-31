@@ -23,7 +23,8 @@ class AppStrings {
   static const String onboardingTitleStart = 'Wherever You Are\n';
   static const String onboardingTitleHighlight = 'Health';
   static const String onboardingTitleEnd = ' Is Number One';
-  static const String onboardingSubtitle = 'There is no instant way to a healthy life';
+  static const String onboardingSubtitle =
+      'There is no instant way to a healthy life';
   static const String getStarted = 'Get Started';
 
   // Home
@@ -51,7 +52,17 @@ class AppStrings {
   static const String trainingTime = 'Training time';
   static const String water = 'Water';
   static const String keepItUp = 'Keep it Up! 💪';
-  static const List<String> weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M'];
+  static const List<String> weekdays = [
+    'S',
+    'M',
+    'T',
+    'W',
+    'T',
+    'F',
+    'S',
+    'S',
+    'M',
+  ];
 
   // Workout detail
   static const String workout = 'Workout';
@@ -99,27 +110,43 @@ class AppStrings {
   static const String duration1m = '01:00';
 
   // Demo image URLs
-  static const String lowerBodyImageUrl = 'https://picsum.photos/seed/lower-body/600/800';
-  static const String handTrainingImageUrl = 'https://picsum.photos/seed/hand-training/600/800';
-  static const String pushUpImageUrl = 'https://picsum.photos/seed/push-up/200/200';
-  static const String sitUpImageUrl = 'https://picsum.photos/seed/sit-up/200/200';
-  static const String kneePushUpImageUrl = 'https://picsum.photos/seed/knee-push-up/200/200';
+  static const String lowerBodyImageUrl =
+      'https://picsum.photos/seed/lower-body/600/800';
+  static const String handTrainingImageUrl =
+      'https://picsum.photos/seed/hand-training/600/800';
+  static const String pushUpImageUrl =
+      'https://picsum.photos/seed/push-up/200/200';
+  static const String sitUpImageUrl =
+      'https://picsum.photos/seed/sit-up/200/200';
+  static const String kneePushUpImageUrl =
+      'https://picsum.photos/seed/knee-push-up/200/200';
   static const String quarantineWorkoutImageUrl =
       'https://picsum.photos/seed/quarantine-workout/800/400';
-  static const String bellyFatImageUrl = 'https://picsum.photos/seed/belly-fat/200/200';
-  static const String plankImageUrl = 'https://picsum.photos/seed/plank/200/200';
-  static const String loseFatImageUrl = 'https://picsum.photos/seed/lose-fat/200/200';
-  static const String buildWiderImageUrl = 'https://picsum.photos/seed/build-wider/200/200';
-  static const String legExercisesImageUrl = 'https://picsum.photos/seed/leg-exercises/200/200';
-  static const String backwardLungeImageUrl = 'https://picsum.photos/seed/backward-lunge/200/200';
-  static const String jumpingJacksImageUrl = 'https://picsum.photos/seed/jumping-jacks/200/200';
-  static const String squatsImageUrl = 'https://picsum.photos/seed/squats/200/200';
-  static const String gluteBridgeImageUrl = 'https://picsum.photos/seed/glute-bridge/200/200';
+  static const String bellyFatImageUrl =
+      'https://picsum.photos/seed/belly-fat/200/200';
+  static const String plankImageUrl =
+      'https://picsum.photos/seed/plank/200/200';
+  static const String loseFatImageUrl =
+      'https://picsum.photos/seed/lose-fat/200/200';
+  static const String buildWiderImageUrl =
+      'https://picsum.photos/seed/build-wider/200/200';
+  static const String legExercisesImageUrl =
+      'https://picsum.photos/seed/leg-exercises/200/200';
+  static const String backwardLungeImageUrl =
+      'https://picsum.photos/seed/backward-lunge/200/200';
+  static const String jumpingJacksImageUrl =
+      'https://picsum.photos/seed/jumping-jacks/200/200';
+  static const String squatsImageUrl =
+      'https://picsum.photos/seed/squats/200/200';
+  static const String gluteBridgeImageUrl =
+      'https://picsum.photos/seed/glute-bridge/200/200';
 
   // Network
   static const String apiBaseUrl = 'https://wger.de/api/v2';
-  static const String networkTimeoutError = 'The request timed out. Please try again.';
+  static const String networkTimeoutError =
+      'The request timed out. Please try again.';
   static const String networkNoInternetError = 'No internet connection.';
-  static const String networkUnexpectedError = 'Something went wrong. Please try again.';
+  static const String networkUnexpectedError =
+      'Something went wrong. Please try again.';
   static const String networkServerError = 'Server error';
 }

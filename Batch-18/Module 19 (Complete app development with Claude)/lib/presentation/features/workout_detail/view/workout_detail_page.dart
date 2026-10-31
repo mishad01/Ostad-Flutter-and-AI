@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_strings.dart';
+import '../../../core/async_placeholder.dart';
 import '../../../dummy_data/dummy_data.dart';
+import '../../../core/exercise_info_extension.dart';
+import '../provider/workout_detail_provider.dart';
 import '../ui_model/workout_ui_model.dart';
 import '../widgets/workout_hero_header.dart';
 import '../widgets/workout_round_card.dart';
 import '../widgets/workout_rounds_header.dart';
 
-class WorkoutDetailPage extends StatelessWidget {
+class WorkoutDetailPage extends StatefulWidget {
   const WorkoutDetailPage({super.key, required this.workout});
 
   final WorkoutUiModel workout;
+
+  @override
+  State<WorkoutDetailPage> createState() => _WorkoutDetailPageState();
+}
+
+class _WorkoutDetailPageState extends State<WorkoutDetailPage> {
+  WorkoutUiModel get workout => widget.workout;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      if (mounted)
+        context.read<WorkoutDetailProvider>().fetchExercise(workout.id);
+    });
+  }
 
   void _onStartWorkout() {}
 
@@ -33,7 +53,11 @@ class WorkoutDetailPage extends StatelessWidget {
         ),
         title: const Text(
           AppStrings.workout,
-          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       body: Stack(
@@ -56,12 +80,31 @@ class WorkoutDetailPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
-              const Text(
-                AppStrings.lowerBodyDescription,
-                style: TextStyle(color: AppColors.darkTextSecondary, fontSize: 15, height: 1.5),
+              Consumer<WorkoutDetailProvider>(
+                builder: (context, provider, _) {
+                  final exercise = provider.exercise;
+                  if (exercise == null) {
+                    return AsyncPlaceholder(
+                      isLoading: provider.isLoading,
+                      errorMessage: provider.errorMessage,
+                    );
+                  }
+
+                  return Text(
+                    exercise.plainDescription,
+                    style: const TextStyle(
+                      color: AppColors.darkTextSecondary,
+                      fontSize: 15,
+                      height: 1.5,
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 32),
-              WorkoutRoundsHeader(current: 1, total: DummyData.workoutRounds.length),
+              WorkoutRoundsHeader(
+                current: 1,
+                total: DummyData.workoutRounds.length,
+              ),
               const SizedBox(height: 16),
               ...List.generate(DummyData.workoutRounds.length, (index) {
                 final round = DummyData.workoutRounds[index];
@@ -92,7 +135,9 @@ class WorkoutDetailPage extends StatelessWidget {
                     backgroundColor: AppColors.accent,
                     foregroundColor: AppColors.cardDark,
                     elevation: 0,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(28),
+                    ),
                   ),
                   child: const Text(
                     AppStrings.letsWorkout,

@@ -4,7 +4,12 @@ import '../../../../core/app_colors.dart';
 import '../../../../core/app_strings.dart';
 
 class ExploreBannerCard extends StatelessWidget {
-  const ExploreBannerCard({super.key, required this.title, required this.imageUrl, this.onSeeMore});
+  const ExploreBannerCard({
+    super.key,
+    required this.title,
+    required this.imageUrl,
+    this.onSeeMore,
+  });
 
   final String title;
   final String imageUrl;
@@ -25,7 +30,10 @@ class ExploreBannerCard extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [Colors.black.withValues(alpha: 0.7), Colors.black.withValues(alpha: 0)],
+                  colors: [
+                    Colors.black.withValues(alpha: 0.7),
+                    Colors.black.withValues(alpha: 0),
+                  ],
                 ),
               ),
             ),
@@ -61,7 +69,11 @@ class ExploreBannerCard extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 8),
-                        Icon(Icons.chevron_right_rounded, color: AppColors.accent, size: 18),
+                        Icon(
+                          Icons.chevron_right_rounded,
+                          color: AppColors.accent,
+                          size: 18,
+                        ),
                       ],
                     ),
                   ),

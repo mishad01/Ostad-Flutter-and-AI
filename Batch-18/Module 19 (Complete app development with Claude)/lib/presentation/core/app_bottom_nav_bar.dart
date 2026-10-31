@@ -6,7 +6,11 @@ import '../../core/app_strings.dart';
 part 'app_bottom_nav_item.dart';
 
 class AppBottomNavBar extends StatelessWidget {
-  const AppBottomNavBar({super.key, required this.currentIndex, required this.onTap});
+  const AppBottomNavBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+  });
 
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -30,7 +34,10 @@ class AppBottomNavBar extends StatelessWidget {
     return Container(
       height: 64,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: BoxDecoration(color: AppColors.cardDark, borderRadius: BorderRadius.circular(32)),
+      decoration: BoxDecoration(
+        color: AppColors.cardDark,
+        borderRadius: BorderRadius.circular(32),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(_icons.length, (index) {

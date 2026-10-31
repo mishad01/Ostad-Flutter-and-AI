@@ -29,7 +29,11 @@ class _NavItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, size: 22, color: isSelected ? AppColors.cardDark : AppColors.textOnPrimary),
+            Icon(
+              icon,
+              size: 22,
+              color: isSelected ? AppColors.cardDark : AppColors.textOnPrimary,
+            ),
             if (isSelected) ...[
               const SizedBox(width: 8),
               Text(

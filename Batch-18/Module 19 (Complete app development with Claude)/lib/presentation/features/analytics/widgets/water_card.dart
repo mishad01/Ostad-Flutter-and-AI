@@ -30,7 +30,9 @@ class WaterCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
             child: SizedBox(
               height: 58,
               width: double.infinity,
@@ -39,7 +41,10 @@ class WaterCard extends StatelessWidget {
                 child: Center(
                   child: Text(
                     '$cups/$goal ${AppStrings.cupsUnit}',
-                    style: const TextStyle(fontSize: 13, color: AppColors.textPrimary),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: AppColors.textPrimary,
+                    ),
                   ),
                 ),
               ),
@@ -78,5 +83,6 @@ class _WaterWavePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _WaterWavePainter oldDelegate) => oldDelegate.level != level;
+  bool shouldRepaint(covariant _WaterWavePainter oldDelegate) =>
+      oldDelegate.level != level;
 }

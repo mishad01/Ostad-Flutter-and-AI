@@ -28,7 +28,12 @@ class WorkoutRoundCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            child: Image.network(imageUrl, width: 58, height: 58, fit: BoxFit.cover),
+            child: Image.network(
+              imageUrl,
+              width: 58,
+              height: 58,
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -46,7 +51,10 @@ class WorkoutRoundCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   duration,
-                  style: const TextStyle(color: AppColors.darkTextSecondary, fontSize: 13),
+                  style: const TextStyle(
+                    color: AppColors.darkTextSecondary,
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
@@ -60,7 +68,11 @@ class WorkoutRoundCard extends StatelessWidget {
                 color: AppColors.darkBackground,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.play_arrow_rounded, color: AppColors.accent, size: 20),
+              child: const Icon(
+                Icons.play_arrow_rounded,
+                color: AppColors.accent,
+                size: 20,
+              ),
             ),
           ),
           const SizedBox(width: 12),

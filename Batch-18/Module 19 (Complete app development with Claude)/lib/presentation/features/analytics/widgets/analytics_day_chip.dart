@@ -18,7 +18,11 @@ class _DayChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = isSelected ? AppColors.textOnPrimary : AppColors.cardDark;
-    final textStyle = TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: textColor);
+    final textStyle = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: textColor,
+    );
 
     return GestureDetector(
       onTap: onTap,

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/app_colors.dart';
 import '../../../../core/app_strings.dart';
 import '../../../core/app_bottom_nav_bar.dart';
+import '../../../core/async_placeholder.dart';
 import '../../../core/section_title.dart';
 import '../../../dummy_data/dummy_data.dart';
 import '../../analytics/view/analytics_page.dart';
 import '../../explore/view/explore_page.dart';
 import '../../workout_detail/ui_model/workout_ui_model.dart';
 import '../../workout_detail/view/workout_detail_page.dart';
+import '../provider/home_provider.dart';
 import '../widgets/home_greeting_header.dart';
 import '../widgets/home_search_bar.dart';
 import '../widgets/popular_workout_card.dart';
@@ -23,6 +26,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _navIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      if (mounted) context.read<HomeProvider>().fetchPopularWorkouts();
+    });
+  }
 
   void _onNavTap(int index) => setState(() => _navIndex = index);
 
@@ -52,22 +63,36 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16),
               SizedBox(
                 height: 260,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: DummyData.popularWorkouts.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: 16),
-                  itemBuilder: (context, index) {
-                    final workout = DummyData.popularWorkouts[index];
+                child: Consumer<HomeProvider>(
+                  builder: (context, provider, _) {
+                    final workouts = provider.popularWorkouts;
+                    if (workouts.isEmpty) {
+                      return AsyncPlaceholder(
+                        isLoading: provider.isLoading,
+                        errorMessage: provider.errorMessage,
+                      );
+                    }
 
-                    return SizedBox(
-                      width: 220,
-                      child: PopularWorkoutCard(
-                        title: workout.title,
-                        imageUrl: workout.imageUrl,
-                        calories: workout.calories,
-                        minutes: workout.minutes,
-                        onPlay: () => _onOpenWorkout(workout),
-                      ),
+                    return ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: workouts.length,
+                      separatorBuilder: (_, _) => const SizedBox(width: 16),
+                      itemBuilder: (context, index) {
+                        final workout = WorkoutUiModel.fromExercise(
+                          workouts[index],
+                        );
+
+                        return SizedBox(
+                          width: 220,
+                          child: PopularWorkoutCard(
+                            title: workout.title,
+                            imageUrl: workout.imageUrl,
+                            calories: workout.calories,
+                            minutes: workout.minutes,
+                            onPlay: () => _onOpenWorkout(workout),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),

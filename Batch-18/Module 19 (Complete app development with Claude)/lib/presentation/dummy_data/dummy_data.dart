@@ -5,25 +5,9 @@ import '../features/explore/ui_model/challenge_ui_model.dart';
 import '../features/explore/ui_model/explore_workout_ui_model.dart';
 import '../features/home/ui_model/today_plan_ui_model.dart';
 import '../features/workout_detail/ui_model/workout_round_ui_model.dart';
-import '../features/workout_detail/ui_model/workout_ui_model.dart';
 
 class DummyData {
   // Home
-  static const List<WorkoutUiModel> popularWorkouts = [
-    WorkoutUiModel(
-      title: AppStrings.lowerBodyTraining,
-      imageUrl: AppStrings.lowerBodyImageUrl,
-      calories: 500,
-      minutes: 50,
-    ),
-    WorkoutUiModel(
-      title: AppStrings.handTraining,
-      imageUrl: AppStrings.handTrainingImageUrl,
-      calories: 600,
-      minutes: 40,
-    ),
-  ];
-
   static const List<TodayPlanUiModel> todayPlans = [
     TodayPlanUiModel(
       title: AppStrings.pushUp,

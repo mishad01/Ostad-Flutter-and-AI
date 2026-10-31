@@ -35,7 +35,10 @@ class PopularWorkoutCard extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.black.withValues(alpha: 0), Colors.black.withValues(alpha: 0.75)],
+                colors: [
+                  Colors.black.withValues(alpha: 0),
+                  Colors.black.withValues(alpha: 0.75),
+                ],
               ),
             ),
           ),
@@ -65,7 +68,10 @@ class PopularWorkoutCard extends StatelessWidget {
                   label: '$calories ${AppStrings.kcalUnit}',
                 ),
                 const SizedBox(height: 10),
-                _InfoChip(icon: Icons.timer_outlined, label: '$minutes ${AppStrings.minUnit}'),
+                _InfoChip(
+                  icon: Icons.timer_outlined,
+                  label: '$minutes ${AppStrings.minUnit}',
+                ),
               ],
             ),
           ),

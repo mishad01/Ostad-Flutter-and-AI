@@ -3,7 +3,11 @@
 part of 'workout_hero_header.dart';
 
 class _StatItem extends StatelessWidget {
-  const _StatItem({required this.icon, required this.label, required this.value});
+  const _StatItem({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
   final IconData icon;
   final String label;
@@ -26,7 +30,10 @@ class _StatItem extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(label, style: const TextStyle(color: Colors.white, fontSize: 12)),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white, fontSize: 12),
+            ),
             const SizedBox(height: 2),
             Text(
               value,

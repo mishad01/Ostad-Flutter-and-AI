@@ -4,7 +4,12 @@ import '../../../../core/app_colors.dart';
 import '../ui_model/challenge_ui_model.dart';
 
 class ChallengeCard extends StatelessWidget {
-  const ChallengeCard({super.key, required this.title, required this.icon, required this.style});
+  const ChallengeCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.style,
+  });
 
   final String title;
   final IconData icon;
@@ -32,10 +37,17 @@ class ChallengeCard extends StatelessWidget {
     return Container(
       width: 110,
       height: 110,
-      decoration: BoxDecoration(color: _background, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+        color: _background,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Stack(
         children: [
-          Positioned(right: 8, bottom: 8, child: Icon(icon, size: 64, color: _iconColor)),
+          Positioned(
+            right: 8,
+            bottom: 8,
+            child: Icon(icon, size: 64, color: _iconColor),
+          ),
           Positioned(
             left: 8,
             bottom: 12,

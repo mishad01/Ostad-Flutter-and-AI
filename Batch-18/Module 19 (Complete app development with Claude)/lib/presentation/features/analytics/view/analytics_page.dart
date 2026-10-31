@@ -87,7 +87,9 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                       children: [
                         StepsCard(steps: 999, goal: 2000),
                         SizedBox(height: 16),
-                        Expanded(child: MotivationCard(message: AppStrings.keepItUp)),
+                        Expanded(
+                          child: MotivationCard(message: AppStrings.keepItUp),
+                        ),
                       ],
                     ),
                   ),
