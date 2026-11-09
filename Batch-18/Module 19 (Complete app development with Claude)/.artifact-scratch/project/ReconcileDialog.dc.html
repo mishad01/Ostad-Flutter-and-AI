@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reconcile Wallet Balance</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="design-system.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap">
+</helmet>
+
+<div style="width: 390px; height: 844px; background: var(--canvas); position: relative; overflow: hidden;">
+
+  <div style="position: absolute; inset: 0; padding: 26px 24px; display: flex; flex-direction: column; gap: 22px; opacity: 0.5;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid var(--hairline);"></div>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <div style="width: 90px; height: 8px; border-radius: 4px; background: var(--hairline);"></div>
+        <div style="width: 70px; height: 8px; border-radius: 4px; background: var(--hairline);"></div>
+      </div>
+    </div>
+    <div style="border-radius: 28px; background: var(--obsidian); height: 190px;"></div>
+    <div style="height: 1px; background: var(--hairline);"></div>
+    <div style="height: 90px; background: var(--hairline); opacity: 0.3; border-radius: 16px;"></div>
+  </div>
+
+  <div style="position: absolute; inset: 0; background: rgba(250,250,249,0.7); backdrop-filter: blur(1px);"></div>
+
+  <div style="position: absolute; left: 24px; right: 24px; top: 50%; transform: translateY(-50%); border-radius: 28px; background: var(--surface); padding: 28px 24px; display: flex; flex-direction: column; gap: 20px; box-shadow: var(--shadow-pop);">
+
+    <span class="font-display" style="font-size: 19px; color: var(--ink);">Reconcile Cash in Hand</span>
+
+    <div style="display: flex;">
+      <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 5px;">
+        <span class="eyebrow">App Recorded</span>
+        <span class="tnum" style="font-size: 19px; color: var(--muted); font-weight: 700;">৳2,450</span>
+      </div>
+      <div style="width: 1px; height: 38px; background: var(--hairline); margin: 0 18px;"></div>
+      <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 5px;">
+        <span class="eyebrow" style="color: var(--success);">Actual in Wallet</span>
+        <input type="text" value="৳2,100" aria-label="Actual cash in wallet" class="tnum" style="border: none; border-bottom: 1.5px solid var(--success); background: transparent; outline: none; font-size: 19px; color: var(--ink); font-weight: 800; font-family: 'Inter', system-ui, sans-serif; padding: 0 0 2px 0; width: 100%;">
+      </div>
+    </div>
+
+    <div class="hairline-t hairline-b" style="padding: 14px 0;">
+      <span class="tnum" style="font-size: 12.5px; color: var(--warning); font-weight: 700;">Difference: -৳350 is missing from your wallet.</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <span class="eyebrow">How Should We Handle This?</span>
+
+      <div style="display: flex; gap: 10px; align-items: flex-start;">
+        <div style="width: 15px; height: 15px; border-radius: 999px; border: 5px solid var(--ink); flex: 0 0 auto; margin-top: 2px;"></div>
+        <span style="font-size: 12px; color: var(--ink); font-weight: 600; line-height: 1.4;">Log as "Unaccounted Small Cash Expenses" under <span style="color: var(--accent); font-weight: 700;">Me – Personal</span></span>
+      </div>
+
+      <div style="display: flex; gap: 10px; align-items: flex-start;">
+        <div style="width: 15px; height: 15px; border-radius: 999px; border: 1.5px solid var(--hairline); flex: 0 0 auto; margin-top: 2px;"></div>
+        <span style="font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.4;">Silently adjust balance without logging an expense</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 10px; padding-top: 4px;">
+      <a href="Main.dc.html" class="btn-ghost" style="flex: 1 1 0;">Cancel</a>
+      <a href="Main.dc.html" class="btn-primary" style="flex: 1 1 0;">Fix Balance</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

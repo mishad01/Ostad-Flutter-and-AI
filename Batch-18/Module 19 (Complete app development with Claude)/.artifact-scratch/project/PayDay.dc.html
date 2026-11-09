@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Payday Salary Planner</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="design-system.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap">
+</helmet>
+
+<div style="width: 390px; height: 844px; background: var(--canvas); display: flex; flex-direction: column; overflow: hidden; position: relative;">
+
+  <div style="flex: 0 0 auto; padding: 26px 24px 0 24px; display: flex; align-items: center; gap: 14px;">
+    <a href="Main.dc.html" aria-label="Back" style="width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--hairline); display: flex; align-items: center; justify-content: center;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="#0F0F12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <span class="font-display" style="font-size: 21px; color: var(--ink);">Payday Planner</span>
+  </div>
+
+  <div style="flex: 1 1 auto; overflow-y: auto; padding: 22px 24px 24px 24px; display: flex; flex-direction: column; gap: 30px;">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <span class="eyebrow">November Inflow Logged</span>
+      <span class="font-display tnum" style="font-size: 36px; color: var(--ink);">৳95,000</span>
+      <div style="display: flex; gap: 20px;">
+        <span style="font-size: 11.5px; color: var(--body); font-weight: 600;">Salary <span class="tnum" style="color: var(--ink); font-weight: 800;">৳75,000</span></span>
+        <span style="font-size: 11.5px; color: var(--body); font-weight: 600;">Teaching <span class="tnum" style="color: var(--ink); font-weight: 800;">৳20,000</span></span>
+      </div>
+      <div class="hairline-t hairline-b" style="padding: 14px 0; display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 12px; color: var(--body); font-weight: 600;">Free Unallocated Cash Flow</span>
+        <span class="tnum" style="font-size: 16px; color: var(--success); font-weight: 800;">৳36,500</span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="eyebrow">Fixed Household Overhead</span>
+        <span class="tnum" style="font-size: 11.5px; color: var(--ink); font-weight: 800;">৳24,500</span>
+      </div>
+
+      <div class="hairline-b" style="padding-bottom: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; background: var(--scope-family); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L19 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">House Rent</span>
+        <span class="tnum" style="font-size: 13px; color: var(--ink); font-weight: 700;">৳16,000</span>
+      </div>
+      <div class="hairline-b" style="padding: 14px 0; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; background: var(--scope-family); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L19 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">Electricity, Gas &amp; Wi-Fi</span>
+        <span class="tnum" style="font-size: 13px; color: var(--ink); font-weight: 700;">৳4,500</span>
+      </div>
+      <div style="padding-top: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; border: 1.5px solid var(--hairline); flex: 0 0 auto;"></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">House Help / Maid Salary</span>
+        <span class="tnum" style="font-size: 13px; color: var(--body); font-weight: 700;">৳4,000</span>
+        <span style="font-size: 11px; color: var(--accent); font-weight: 700;">Pay</span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="eyebrow">Family Member Allowances</span>
+        <span class="tnum" style="font-size: 11.5px; color: var(--ink); font-weight: 800;">৳18,000</span>
+      </div>
+
+      <div class="hairline-b" style="padding-bottom: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; background: var(--scope-member); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L19 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">Spouse Monthly Allowance</span>
+        <span class="tnum" style="font-size: 13px; color: var(--ink); font-weight: 700;">৳10,000</span>
+      </div>
+      <div class="hairline-b" style="padding: 14px 0; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; background: var(--scope-member); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L19 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">Mother Monthly Allowance</span>
+        <span class="tnum" style="font-size: 13px; color: var(--ink); font-weight: 700;">৳5,000</span>
+      </div>
+      <div style="padding-top: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; border: 1.5px solid var(--hairline); flex: 0 0 auto;"></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">Brother Pocket Money</span>
+        <span class="tnum" style="font-size: 13px; color: var(--body); font-weight: 700;">৳3,000</span>
+        <span style="font-size: 11px; color: var(--accent); font-weight: 700;">Pay</span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="eyebrow">Personal Subscriptions &amp; Savings</span>
+        <span class="tnum" style="font-size: 11.5px; color: var(--ink); font-weight: 800;">৳16,000</span>
+      </div>
+
+      <div class="hairline-b" style="padding-bottom: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; background: var(--scope-personal); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L19 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">DPS / Savings Transfer</span>
+        <span class="tnum" style="font-size: 13px; color: var(--ink); font-weight: 700;">৳12,000</span>
+      </div>
+      <div style="padding-top: 14px; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 18px; height: 18px; border-radius: 6px; border: 1.5px solid var(--hairline); flex: 0 0 auto;"></div>
+        <span style="font-size: 13px; color: var(--ink); font-weight: 600; flex: 1 1 auto;">AI &amp; Streaming Subscriptions</span>
+        <span class="tnum" style="font-size: 13px; color: var(--body); font-weight: 700;">৳4,000</span>
+        <span style="font-size: 11px; color: var(--accent); font-weight: 700;">Pay</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hairline-t" style="flex: 0 0 auto; padding: 16px 24px 22px 24px; background: var(--surface); display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <span class="btn-primary">Pay Selected Commitments</span>
+    <span style="font-size: 12px; color: var(--accent); font-weight: 700;">+ Add New Recurring Commitment</span>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

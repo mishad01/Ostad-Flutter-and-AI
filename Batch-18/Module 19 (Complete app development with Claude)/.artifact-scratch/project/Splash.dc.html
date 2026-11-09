@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Splash</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="design-system.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap">
+</helmet>
+
+<div style="width: 390px; height: 844px; background: #0F172A; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+
+  <div style="position: absolute; width: 520px; height: 520px; border-radius: 999px; background: radial-gradient(circle, rgba(79,70,229,0.35) 0%, rgba(15,23,42,0) 70%); top: -140px; right: -160px;"></div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+    <div style="width: 68px; height: 68px; border-radius: 20px; background: linear-gradient(135deg, #4F46E5 0%, #0F172A 100%); display: flex; align-items: center; justify-content: center;">
+      <span class="font-display" style="font-size: 30px; color: #FFFFFF;">৳</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <span class="font-display" style="font-size: 38px; color: #FFFFFF;">Khata.</span>
+      <span style="font-size: 13.5px; color: #94A3B8; font-weight: 500;">One balance. Every ledger.</span>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 64px; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+    <div style="display: flex; gap: 6px;">
+      <span style="width: 6px; height: 6px; border-radius: 999px; background: #FFFFFF;"></span>
+      <span style="width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.3);"></span>
+      <span style="width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.3);"></span>
+    </div>
+    <span class="tnum" style="font-size: 10.5px; color: #64748B; letter-spacing: 0.04em;">v1.0</span>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

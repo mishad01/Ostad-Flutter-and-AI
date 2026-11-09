@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Member Detail Ledger — Mother</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="design-system.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap">
+</helmet>
+
+<div style="width: 390px; height: 844px; background: var(--canvas); display: flex; flex-direction: column; overflow: hidden; position: relative;">
+
+  <div style="flex: 0 0 auto; padding: 26px 24px 0 24px; display: flex; align-items: center; gap: 12px;">
+    <a href="FamilyHub.dc.html" aria-label="Back" style="width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--hairline); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="#0F0F12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div style="width: 36px; height: 36px; border-radius: 999px; background: #F4F4F3; color: var(--body); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex: 0 0 auto;">MA</div>
+    <div style="display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0;">
+      <span class="font-display" style="font-size: 17px; color: var(--ink);">Mother</span>
+      <span style="font-size: 10.5px; color: var(--muted); font-weight: 600;">Parent</span>
+    </div>
+    <button aria-label="Settings" style="width: 32px; height: 32px; background: transparent; border: none; display: flex; align-items: center; justify-content: center;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="#52525B" stroke-width="1.6"/><path d="M19.4 13.5a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.56V20a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1H4a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.56-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H10a1.7 1.7 0 0 0 1-1.56V4a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V10a1.7 1.7 0 0 0 1.56 1H20a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1Z" stroke="#52525B" stroke-width="1.3"/></svg>
+    </button>
+  </div>
+
+  <div style="flex: 1 1 auto; overflow-y: auto; padding: 22px 24px 24px 24px; display: flex; flex-direction: column; gap: 30px;">
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span class="eyebrow">Given in November</span>
+          <span class="font-display tnum" style="font-size: 28px; color: var(--ink);">৳8,000</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
+          <span class="eyebrow">2026 Total</span>
+          <span class="tnum" style="font-size: 14px; color: var(--body); font-weight: 700;">৳92,500</span>
+        </div>
+      </div>
+
+      <div style="display: flex;">
+        <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 10.5px; color: var(--muted); font-weight: 600;">Direct Cash</span>
+          <span class="tnum" style="font-size: 15px; color: var(--ink); font-weight: 700;">৳5,000</span>
+        </div>
+        <div style="width: 1px; height: 28px; background: var(--hairline); margin: 0 16px;"></div>
+        <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 3px;">
+          <span style="font-size: 10.5px; color: var(--muted); font-weight: 600;">On Her Behalf</span>
+          <span class="tnum" style="font-size: 15px; color: var(--ink); font-weight: 700;">৳3,000</span>
+        </div>
+      </div>
+
+      <div class="hairline-t" style="padding-top: 14px; display: flex; align-items: center; gap: 10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex: 0 0 auto;"><path d="M5 12l5 5L19 7" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="tnum" style="font-size: 12px; color: var(--body); font-weight: 600; flex: 1 1 auto;">Monthly allowance paid on Nov 2</span>
+        <span style="font-size: 12px; color: var(--accent); font-weight: 700;">+ Log</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 20px;">
+      <span style="font-size: 12.5px; color: var(--muted); font-weight: 600;">All Time</span>
+      <span style="font-size: 12.5px; color: var(--muted); font-weight: 600;">Sep</span>
+      <span style="font-size: 12.5px; color: var(--muted); font-weight: 600;">Oct</span>
+      <span style="font-size: 12.5px; color: var(--ink); font-weight: 800; border-bottom: 2px solid var(--scope-member); padding-bottom: 4px;">Nov</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span class="eyebrow">This Month By Category</span>
+      <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+        <span style="font-size: 11.5px; color: var(--body); font-weight: 600;">Allowance <span style="color: var(--ink); font-weight: 800;">62%</span></span>
+        <span style="font-size: 11.5px; color: var(--body); font-weight: 600;">Medical <span style="color: var(--ink); font-weight: 800;">25%</span></span>
+        <span style="font-size: 11.5px; color: var(--body); font-weight: 600;">Recharge <span style="color: var(--ink); font-weight: 800;">8%</span></span>
+        <span style="font-size: 11.5px; color: var(--body); font-weight: 600;">Gifts <span style="color: var(--ink); font-weight: 800;">5%</span></span>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+
+      <span class="eyebrow" style="margin-bottom: 10px;">Nov 12</span>
+      <div class="hairline-b" style="padding-bottom: 16px; display: flex; align-items: center; gap: 13px;">
+        <div style="display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0;">
+          <span style="font-size: 13.5px; color: var(--ink); font-weight: 600;">Lazz Pharma (Medicine)</span>
+          <span style="font-size: 11px; color: var(--muted);">Paid on Behalf · bKash</span>
+        </div>
+        <span class="tnum" style="font-size: 13.5px; color: var(--ink); font-weight: 700;">-৳1,800</span>
+      </div>
+
+      <span class="eyebrow" style="margin: 16px 0 10px 0;">Nov 08</span>
+      <div class="hairline-b" style="padding-bottom: 16px; display: flex; align-items: center; gap: 13px;">
+        <div style="display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0;">
+          <span style="font-size: 13.5px; color: var(--ink); font-weight: 600;">Grameenphone Recharge</span>
+          <span style="font-size: 11px; color: var(--muted);">Paid on Behalf · bKash</span>
+        </div>
+        <span class="tnum" style="font-size: 13.5px; color: var(--ink); font-weight: 700;">-৳200</span>
+      </div>
+
+      <span class="eyebrow" style="margin: 16px 0 10px 0;">Nov 05</span>
+      <div class="hairline-b" style="padding-bottom: 16px; display: flex; align-items: center; gap: 13px;">
+        <div style="display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0;">
+          <span style="font-size: 13.5px; color: var(--ink); font-weight: 600;">Eye Hospital Checkup</span>
+          <span style="font-size: 11px; color: var(--muted);">Paid on Behalf · Cash</span>
+        </div>
+        <span class="tnum" style="font-size: 13.5px; color: var(--ink); font-weight: 700;">-৳1,000</span>
+      </div>
+
+      <span class="eyebrow" style="margin: 16px 0 10px 0;">Nov 02</span>
+      <div style="display: flex; align-items: center; gap: 13px;">
+        <div style="display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0;">
+          <span style="font-size: 13.5px; color: var(--ink); font-weight: 600;">Monthly Fixed Allowance</span>
+          <span style="font-size: 11px; color: var(--scope-member); font-weight: 700;">Direct Cash Given · Bank</span>
+        </div>
+        <span class="tnum" style="font-size: 13.5px; color: var(--ink); font-weight: 700;">-৳5,000</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

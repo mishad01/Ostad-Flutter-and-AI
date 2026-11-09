@@ -1,0 +1,25 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-01T00:00:00Z" },
+  "title": "Khata — Multi-Ledger Finance App",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Splash.dc.html": { "x": 0, "y": -964, "w": 390, "h": 844, "title": "Splash" },
+    "Auth.dc.html": { "x": 470, "y": -964, "w": 390, "h": 844, "title": "Sign In / Sign Up" },
+    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "Home Dashboard" },
+    "AddTransaction.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "Add Transaction" },
+    "FamilyHub.dc.html": { "x": 940, "y": 0, "w": 390, "h": 844, "title": "Family & People Hub" },
+    "OfficeFunds.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 844, "title": "Office & Held Funds" },
+    "MemberLedger.dc.html": { "x": 0, "y": 964, "w": 390, "h": 844, "title": "Member Detail Ledger" },
+    "PayDay.dc.html": { "x": 470, "y": 964, "w": 390, "h": 844, "title": "Payday Planner" },
+    "SplitTransaction.dc.html": { "x": 940, "y": 964, "w": 390, "h": 844, "title": "Split Transaction" },
+    "LogIncoming.dc.html": { "x": 1410, "y": 964, "w": 390, "h": 844, "title": "Log Incoming Money" },
+    "ReconcileDialog.dc.html": { "x": 1880, "y": 964, "w": 390, "h": 844, "title": "Reconcile Wallet" }
+  },
+  "order": ["Splash.dc.html", "Auth.dc.html", "Main.dc.html", "AddTransaction.dc.html", "FamilyHub.dc.html", "OfficeFunds.dc.html", "MemberLedger.dc.html", "PayDay.dc.html", "SplitTransaction.dc.html", "LogIncoming.dc.html", "ReconcileDialog.dc.html"],
+  "notes": {
+    "title": { "x": 0, "y": -1220, "text": "Khata — Multi-Ledger Finance App", "kind": "title1", "maxW": 2270 }
+  },
+  "designSystems": []
+}

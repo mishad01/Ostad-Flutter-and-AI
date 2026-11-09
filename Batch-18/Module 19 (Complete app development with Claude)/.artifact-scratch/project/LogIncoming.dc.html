@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Log Incoming Money</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="design-system.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap">
+</helmet>
+
+<div style="width: 390px; height: 844px; background: var(--obsidian); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;">
+
+  <a href="AddTransaction.dc.html" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 30px; height: 30px; border-radius: 999px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19" stroke="#F8FAFC" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </a>
+
+  <div style="height: 798px; background: var(--canvas); border-radius: 28px 28px 0 0; display: flex; flex-direction: column; overflow: hidden;">
+
+    <div style="display: flex; justify-content: center; padding: 12px 0 2px 0;">
+      <div style="width: 36px; height: 4px; border-radius: 999px; background: var(--hairline);"></div>
+    </div>
+
+    <div style="flex: 1 1 auto; overflow-y: auto; padding: 16px 24px 20px 24px; display: flex; flex-direction: column; gap: 24px;">
+
+      <div style="display: flex; gap: 22px;">
+        <span style="font-size: 14px; font-weight: 600; color: var(--muted);">Expense</span>
+        <span style="font-size: 14px; font-weight: 700; color: var(--ink); border-bottom: 2px solid var(--ink); padding-bottom: 6px;">Income</span>
+        <span style="font-size: 14px; font-weight: 600; color: var(--muted);">Transfer</span>
+        <span style="font-size: 14px; font-weight: 600; color: var(--muted);">Split</span>
+      </div>
+      <div class="divider" style="margin-top: -24px;"></div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 0;">
+        <span class="font-display tnum" style="font-size: 42px; color: var(--ink);">৳20,000</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column;">
+        <div class="hairline-b" style="padding-bottom: 13px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 11.5px; color: var(--muted); font-weight: 600;">Received Into</span>
+          <span style="font-size: 12.5px; color: var(--ink); font-weight: 700;">bKash</span>
+        </div>
+        <div style="padding-top: 13px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-size: 11.5px; color: var(--muted); font-weight: 600;">From Person / Source</span>
+          <span style="font-size: 12.5px; color: var(--ink); font-weight: 700;">Uncle / Relative</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <span class="eyebrow">What Kind of Money Is This?</span>
+
+        <div style="padding: 14px 0; display: flex; gap: 14px; align-items: flex-start;" class="hairline-b">
+          <div style="width: 16px; height: 16px; border-radius: 999px; border: 1.5px solid var(--hairline); flex: 0 0 auto; margin-top: 2px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13.5px; color: var(--ink); font-weight: 700;">My Earned Income / Salary</span>
+            <span style="font-size: 10.5px; color: var(--muted); line-height: 1.4;">Salary, freelance, teaching, or bonus. Increases your spendable balance.</span>
+          </div>
+        </div>
+
+        <div style="padding: 14px 0; display: flex; gap: 14px; align-items: flex-start;" class="hairline-b">
+          <div style="width: 16px; height: 16px; border-radius: 999px; border: 1.5px solid var(--hairline); flex: 0 0 auto; margin-top: 2px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13.5px; color: var(--ink); font-weight: 700;">Gift / Pocket Money for Me</span>
+            <span style="font-size: 10.5px; color: var(--muted); line-height: 1.4;">Money given to you to keep and spend freely.</span>
+          </div>
+        </div>
+
+        <div style="padding: 14px 0; display: flex; flex-direction: column; gap: 14px; border-left: 2px solid var(--scope-custodial); padding-left: 14px;" class="hairline-b">
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 16px; height: 16px; border-radius: 999px; border: 5px solid var(--scope-custodial); flex: 0 0 auto; margin-top: 2px;"></div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 13.5px; color: var(--ink); font-weight: 700;">Someone Else's Money (Custodial)</span>
+              <span style="font-size: 10.5px; color: var(--scope-custodial); line-height: 1.4; font-weight: 600;">Held safely or spent on their behalf. Will NOT count as your income.</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; padding-left: 28px;">
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <span class="eyebrow" style="color: var(--scope-custodial);">Fund Name</span>
+              <input type="text" value="Uncle's Hospital &amp; Test Fund" aria-label="Fund name" style="padding: 10px 0; border: none; border-bottom: 1px solid var(--hairline); background: transparent; font-size: 13px; color: var(--ink); font-family: 'Inter', system-ui, sans-serif; outline: none;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 18px; height: 18px; border-radius: 6px; background: var(--scope-custodial); display: flex; align-items: center; justify-content: center; flex: 0 0 auto;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L19 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size: 11px; color: var(--body); font-weight: 600; line-height: 1.4;">Create a dedicated tracking bucket until ৳20,000 is spent or returned.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-top: 14px; display: flex; gap: 14px; align-items: flex-start;">
+          <div style="width: 16px; height: 16px; border-radius: 999px; border: 1.5px solid var(--hairline); flex: 0 0 auto; margin-top: 2px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13.5px; color: var(--ink); font-weight: 700;">Borrowed / Temporary Loan</span>
+            <span style="font-size: 10.5px; color: var(--muted); line-height: 1.4;">Money you must pay back later. Adds to your Payable Loans tracker.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hairline-t" style="flex: 0 0 auto; padding: 14px 24px 20px 24px; background: var(--surface);">
+      <a href="AddTransaction.dc.html" class="btn-primary" style="background: var(--scope-custodial);">Create Custodial Bucket (+৳20,000)</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
