@@ -51,4 +51,9 @@ class AppStrings {
   static const String popular = 'Popular';
   static const String special = 'Special';
   static const String newArrival = 'New';
+
+  // --- Home ---
+  static const String bannerTitle = 'Happy New Year\nSpecial Deal\nSave 30%';
+  static const String buyNow = 'Buy Now';
+  static const String wishList = 'Wish List';
 }

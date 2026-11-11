@@ -1,6 +1,7 @@
 import 'package:crafty_bay/core/app_assets.dart';
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
+import 'package:crafty_bay/presentation/feature/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,6 +36,11 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
   void _onComplete() {
     if (!_formKey.currentState!.validate()) return;
     // TODO: submit profile to the API once the auth provider exists.
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const HomePage()),
+      (_) => false,
+    );
   }
 
   @override

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:crafty_bay/core/app_assets.dart';
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
+import 'package:crafty_bay/presentation/feature/home/view/home_page.dart';
+import 'package:crafty_bay/presentation/feature/home/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,7 +37,7 @@ class _SplashPageState extends State<SplashPage> {
     if (!mounted) return;
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const LoginPage()),
+      MaterialPageRoute(builder: (_) => const HomePage()),
     );
   }
 

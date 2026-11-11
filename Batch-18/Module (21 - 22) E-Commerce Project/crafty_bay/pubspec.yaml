@@ -37,6 +37,7 @@ dependencies:
   http: ^1.6.0
   provider: ^6.1.5+1
   flutter_svg: ^2.3.2
+  google_fonts: ^6.3.3
 
 dev_dependencies:
   flutter_test:
@@ -94,3 +95,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+dependency_overrides:
+  path_provider_foundation: 2.4.1

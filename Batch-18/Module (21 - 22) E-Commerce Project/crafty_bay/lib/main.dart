@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'core/app_colors.dart';
 import 'core/app_strings.dart';
@@ -16,6 +17,7 @@ class CraftyBayApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeData.dark(),
       theme: ThemeData(
+        textTheme: GoogleFonts.poppinsTextTheme(),
         scaffoldBackgroundColor: AppColors.background,
         appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.background,
