@@ -49,7 +49,12 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
             child: Column(
               children: [
                 const SizedBox(height: 60),
-                SvgPicture.asset(AppAssets.logo, width: 90),
+                SvgPicture.asset(
+                  AppAssets.logo,
+                  width: 90,
+                  height: 90,
+                  fit: BoxFit.contain,
+                ),
                 const SizedBox(height: 16),
                 const Text(
                   AppStrings.completeProfile,
@@ -62,7 +67,10 @@ class _CompleteProfilePageState extends State<CompleteProfilePage> {
                 const SizedBox(height: 4),
                 const Text(
                   AppStrings.completeProfileSubtitle,
-                  style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 ProfileTextField(
