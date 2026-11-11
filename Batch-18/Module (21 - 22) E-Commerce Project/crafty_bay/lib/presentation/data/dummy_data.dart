@@ -14,6 +14,12 @@ class DummyData {
     CategoryUiModel(name: 'Furniture', icon: Icons.bed_outlined),
   ];
 
+  /// The four sample categories repeated, to fill the Categories page grid.
+  static final List<CategoryUiModel> allCategories = List.generate(
+    16,
+    (i) => categories[i % categories.length],
+  );
+
   static const List<ProductUiModel> products = [
     ProductUiModel(
       title: 'New Year Special Shoe 30',

@@ -14,6 +14,11 @@ class CategoryCard extends StatelessWidget {
     this.onTap,
   });
 
+  /// Standard tile size for a 4-column layout on the current screen width.
+  /// Tiles keep this size; leftover width becomes spacing between them.
+  static double tileSize(BuildContext context) =>
+      (MediaQuery.sizeOf(context).width - 100) / 4;
+
   final IconData icon;
   final String name;
 

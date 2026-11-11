@@ -51,7 +51,7 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AspectRatio(
-              aspectRatio: 1.45,
+              aspectRatio: 1.20,
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.primaryLight,

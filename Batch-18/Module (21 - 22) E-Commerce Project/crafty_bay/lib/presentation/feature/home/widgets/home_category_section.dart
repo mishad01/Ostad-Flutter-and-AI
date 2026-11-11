@@ -4,7 +4,7 @@ import 'package:crafty_bay/presentation/core/section_header.dart';
 import 'package:crafty_bay/presentation/model/category_ui_model.dart';
 import 'package:flutter/material.dart';
 
-/// "All Categories" header followed by a horizontal row of category tiles.
+/// "All Categories" header followed by a row of up to four category tiles.
 class HomeCategorySection extends StatelessWidget {
   const HomeCategorySection({
     super.key,
@@ -17,9 +17,7 @@ class HomeCategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 16px page padding on both sides + three 12px gaps → four tiles span
-    // the full width. More than four categories scroll horizontally.
-    final tileSize = (MediaQuery.sizeOf(context).width - 50 - 50) / 4;
+    final tileSize = CategoryCard.tileSize(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,20 +26,23 @@ class HomeCategorySection extends StatelessWidget {
           title: AppStrings.allCategories,
           onSeeAllTap: onSeeAllTap,
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
+        Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+          // Each tile sits centred in an equal quarter of the width, so the
+          // spare space becomes even spacing without enlarging the tiles.
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (final category in categories) ...[
-                if (category != categories.first) const SizedBox(width: 12),
-                CategoryCard(
-                  icon: category.icon,
-                  name: category.name,
-                  size: tileSize,
+              for (final category in categories.take(4))
+                Expanded(
+                  child: Center(
+                    child: CategoryCard(
+                      icon: category.icon,
+                      name: category.name,
+                      size: tileSize,
+                    ),
+                  ),
                 ),
-              ],
             ],
           ),
         ),

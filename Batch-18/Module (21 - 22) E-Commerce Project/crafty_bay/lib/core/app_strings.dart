@@ -16,7 +16,8 @@ class AppStrings {
   static const String emailAddress = 'Email Address';
   static const String password = 'Password';
   static const String passwordRequired = 'Please enter your password';
-  static const String passwordTooShort = 'Password must be at least 6 characters';
+  static const String passwordTooShort =
+      'Password must be at least 6 characters';
   static const String next = 'Next';
   static const String emailRequired = 'Please enter your email';
   static const String emailInvalid = 'Please enter a valid email';
@@ -30,7 +31,8 @@ class AppStrings {
 
   // --- Complete profile ---
   static const String completeProfile = 'Complete Profile';
-  static const String completeProfileSubtitle = 'Get started with us with your details';
+  static const String completeProfileSubtitle =
+      'Get started with us with your details';
   static const String firstName = 'First Name';
   static const String lastName = 'Last Name';
   static const String mobile = 'Mobile';
@@ -56,4 +58,5 @@ class AppStrings {
   static const String bannerTitle = 'Happy New Year\nSpecial Deal\nSave 30%';
   static const String buyNow = 'Buy Now';
   static const String wishList = 'Wish List';
+  static const String categories = 'Categories';
 }

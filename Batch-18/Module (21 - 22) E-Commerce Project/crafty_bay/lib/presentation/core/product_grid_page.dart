@@ -45,7 +45,7 @@ class ProductGridPage extends StatelessWidget {
           crossAxisCount: crossAxisCount,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
-          mainAxisExtent: 150,
+          mainAxisExtent: 175,
         ),
         itemCount: itemCount,
         itemBuilder: itemBuilder,

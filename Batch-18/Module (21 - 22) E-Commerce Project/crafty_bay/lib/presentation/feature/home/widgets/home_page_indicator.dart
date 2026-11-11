@@ -24,9 +24,13 @@ class HomePageIndicator extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 4),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: i == currentIndex ? AppColors.primary : AppColors.background,
+              color: i == currentIndex
+                  ? AppColors.primary
+                  : AppColors.background,
               border: Border.all(
-                color: i == currentIndex ? AppColors.primary : AppColors.iconInactive,
+                color: i == currentIndex
+                    ? AppColors.primary
+                    : AppColors.iconInactive,
               ),
             ),
           ),

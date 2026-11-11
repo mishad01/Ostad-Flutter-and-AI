@@ -20,9 +20,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
 
   void _onNext() {
     if (_code.length < 4) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(AppStrings.otpIncomplete)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text(AppStrings.otpIncomplete)));
       return;
     }
     // TODO: verify OTP with the API once the auth provider exists.
