@@ -42,10 +42,8 @@ class ReviewsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         itemCount: reviews.length,
         separatorBuilder: (_, _) => const SizedBox(height: 12),
-        itemBuilder: (_, i) => ReviewCard(
-          name: reviews[i].name,
-          comment: reviews[i].comment,
-        ),
+        itemBuilder: (_, i) =>
+            ReviewCard(name: reviews[i].name, comment: reviews[i].comment),
       ),
       bottomNavigationBar: BottomActionBar(
         leading: const Text(

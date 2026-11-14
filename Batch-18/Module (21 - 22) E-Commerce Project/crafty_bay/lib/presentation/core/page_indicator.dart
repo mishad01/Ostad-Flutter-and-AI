@@ -1,9 +1,9 @@
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:flutter/material.dart';
 
-/// Row of dots; the dot at [currentIndex] is filled with the brand colour.
-class HomePageIndicator extends StatelessWidget {
-  const HomePageIndicator({
+/// Row of dots (carousels on Home and Product details); the dot at [currentIndex] is filled with the brand colour.
+class PageIndicator extends StatelessWidget {
+  const PageIndicator({
     super.key,
     required this.count,
     required this.currentIndex,

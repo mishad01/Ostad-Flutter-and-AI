@@ -1,6 +1,8 @@
 import 'package:crafty_bay/core/app_assets.dart';
+import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/presentation/model/cart_item_ui_model.dart';
 import 'package:crafty_bay/presentation/model/category_ui_model.dart';
+import 'package:crafty_bay/presentation/model/product_details_ui_model.dart';
 import 'package:crafty_bay/presentation/model/product_ui_model.dart';
 import 'package:crafty_bay/presentation/model/review_ui_model.dart';
 import 'package:flutter/material.dart';
@@ -90,4 +92,26 @@ class DummyData {
       imagePath: AppAssets.shoe,
     ),
   ];
+
+  /// Sample detail shown for any tapped product until the API is wired.
+  static const ProductDetailsUiModel productDetails = ProductDetailsUiModel(
+    title: 'Happy New Year Special Deal Save 30%',
+    price: 1000,
+    rating: 4.8,
+    description: _loremReview,
+    imagePaths: [
+      AppAssets.shoe,
+      AppAssets.shoe,
+      AppAssets.shoe,
+      AppAssets.shoe,
+    ],
+    colors: [
+      AppColors.swatchBlack,
+      AppColors.swatchBlue,
+      AppColors.swatchBrown,
+      AppColors.swatchGrey,
+      AppColors.swatchDarkGrey,
+    ],
+    sizes: ['S', 'M', 'L', 'XL'],
+  );
 }

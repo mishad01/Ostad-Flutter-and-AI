@@ -80,7 +80,8 @@ class _CartPageState extends State<CartPage> {
             image: AssetImage(item.imagePath),
             title: item.title,
             details: item.details,
-            price: '${AppStrings.currencySymbol}${item.price.toStringAsFixed(0)}',
+            price:
+                '${AppStrings.currencySymbol}${item.price.toStringAsFixed(0)}',
             quantity: item.quantity,
             onQuantityChanged: (q) => _onQuantityChanged(i, q),
             onDelete: () => _onDelete(i),

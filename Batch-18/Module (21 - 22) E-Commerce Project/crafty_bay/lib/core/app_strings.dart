@@ -67,6 +67,12 @@ class AppStrings {
   static const String addToCart = 'Add To Cart';
   static const String reviews = 'Reviews';
 
+  // --- Product details ---
+  static const String productDetails = 'Product Details';
+  static const String color = 'Color';
+  static const String size = 'Size';
+  static const String description = 'Description';
+
   // --- Cart ---
   static const String cart = 'Cart';
   static const String currencySymbol = '\$';

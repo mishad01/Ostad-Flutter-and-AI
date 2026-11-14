@@ -1,5 +1,5 @@
 import 'package:crafty_bay/presentation/feature/home/widgets/home_banner_slide.dart';
-import 'package:crafty_bay/presentation/feature/home/widgets/home_page_indicator.dart';
+import 'package:crafty_bay/presentation/core/page_indicator.dart';
 import 'package:flutter/material.dart';
 
 class HomeBannerCarousel extends StatefulWidget {
@@ -27,10 +27,7 @@ class _HomeBannerCarouselState extends State<HomeBannerCarousel> {
           ),
         ),
         const SizedBox(height: 12),
-        HomePageIndicator(
-          count: widget.slideCount,
-          currentIndex: _currentIndex,
-        ),
+        PageIndicator(count: widget.slideCount, currentIndex: _currentIndex),
       ],
     );
   }

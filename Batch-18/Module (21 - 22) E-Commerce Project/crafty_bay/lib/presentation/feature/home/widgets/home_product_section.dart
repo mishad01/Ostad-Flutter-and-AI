@@ -2,6 +2,8 @@ import 'package:crafty_bay/core/app_strings.dart';
 import 'package:crafty_bay/presentation/core/product_card.dart';
 import 'package:crafty_bay/presentation/core/product_grid_page.dart';
 import 'package:crafty_bay/presentation/core/product_section.dart';
+import 'package:crafty_bay/presentation/data/dummy_data.dart';
+import 'package:crafty_bay/presentation/feature/product_details/view/product_details_page.dart';
 import 'package:crafty_bay/presentation/model/product_ui_model.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,16 @@ class HomeProductSection extends StatelessWidget {
   final String title;
   final List<ProductUiModel> products;
 
+  void _openDetails(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) =>
+            const ProductDetailsPage(product: DummyData.productDetails),
+      ),
+    );
+  }
+
   void _openAll(BuildContext context) {
     Navigator.push(
       context,
@@ -29,6 +41,7 @@ class HomeProductSection extends StatelessWidget {
             title: products[i].title,
             price: products[i].price,
             rating: products[i].rating,
+            onTap: () => _openDetails(context),
           ),
         ),
       ),
@@ -51,6 +64,7 @@ class HomeProductSection extends StatelessWidget {
         title: products[i].title,
         price: products[i].price,
         rating: products[i].rating,
+        onTap: () => _openDetails(context),
       ),
     );
   }

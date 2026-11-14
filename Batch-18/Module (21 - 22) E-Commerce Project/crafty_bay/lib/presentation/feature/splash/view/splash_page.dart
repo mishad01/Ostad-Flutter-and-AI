@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:crafty_bay/core/app_assets.dart';
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
-import 'package:crafty_bay/presentation/feature/cart/view/cart_page.dart';
+import 'package:crafty_bay/presentation/data/dummy_data.dart';
 import 'package:crafty_bay/presentation/feature/home/view/home_page.dart';
 import 'package:crafty_bay/presentation/feature/home/widgets/home_app_bar.dart';
+import 'package:crafty_bay/presentation/feature/product_details/view/product_details_page.dart';
 import 'package:crafty_bay/presentation/feature/reviews/view/reviews_page.dart';
 import 'package:crafty_bay/presentation/feature/reviews/widgets/review_card.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,9 @@ class _SplashPageState extends State<SplashPage> {
     if (!mounted) return;
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const CartPage()),
+      MaterialPageRoute(
+        builder: (_) => ProductDetailsPage(product: DummyData.productDetails),
+      ),
     );
   }
 
