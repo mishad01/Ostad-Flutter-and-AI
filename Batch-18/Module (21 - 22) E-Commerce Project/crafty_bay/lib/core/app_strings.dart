@@ -67,6 +67,10 @@ class AppStrings {
   static const String addToCart = 'Add To Cart';
   static const String reviews = 'Reviews';
 
+  // --- Bottom navigation ---
+  static const String home = 'Home';
+  static const String wish = 'Wish';
+
   // --- Product details ---
   static const String productDetails = 'Product Details';
   static const String color = 'Color';

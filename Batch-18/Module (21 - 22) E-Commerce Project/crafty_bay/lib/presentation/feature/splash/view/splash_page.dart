@@ -3,16 +3,10 @@ import 'dart:async';
 import 'package:crafty_bay/core/app_assets.dart';
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
-import 'package:crafty_bay/presentation/data/dummy_data.dart';
-import 'package:crafty_bay/presentation/feature/home/view/home_page.dart';
-import 'package:crafty_bay/presentation/feature/home/widgets/home_app_bar.dart';
-import 'package:crafty_bay/presentation/feature/product_details/view/product_details_page.dart';
-import 'package:crafty_bay/presentation/feature/reviews/view/reviews_page.dart';
-import 'package:crafty_bay/presentation/feature/reviews/widgets/review_card.dart';
+import 'package:crafty_bay/presentation/feature/main/view/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../auth/login/view/login_page.dart';
 import '../widgets/splash_loader.dart';
 
 class SplashPage extends StatefulWidget {
@@ -41,9 +35,7 @@ class _SplashPageState extends State<SplashPage> {
     if (!mounted) return;
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (_) => ProductDetailsPage(product: DummyData.productDetails),
-      ),
+      MaterialPageRoute(builder: (_) => const MainPage()),
     );
   }
 
