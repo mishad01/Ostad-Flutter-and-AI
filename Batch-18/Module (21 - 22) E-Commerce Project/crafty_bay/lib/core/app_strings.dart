@@ -59,4 +59,15 @@ class AppStrings {
   static const String buyNow = 'Buy Now';
   static const String wishList = 'Wish List';
   static const String categories = 'Categories';
+
+  // --- Bottom action bar (cart, product details, reviews) ---
+  static const String totalPrice = 'Total Price';
+  static const String price = 'Price';
+  static const String checkout = 'Checkout';
+  static const String addToCart = 'Add To Cart';
+  static const String reviews = 'Reviews';
+
+  // --- Cart ---
+  static const String cart = 'Cart';
+  static const String currencySymbol = '\$';
 }
