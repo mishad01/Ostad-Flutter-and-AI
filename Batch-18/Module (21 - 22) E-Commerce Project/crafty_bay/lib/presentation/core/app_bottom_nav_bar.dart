@@ -11,10 +11,14 @@ class AppBottomNavBar extends StatelessWidget {
     super.key,
     required this.currentIndex,
     required this.onTap,
+    this.cartCount = 0,
   });
 
   final int currentIndex;
   final ValueChanged<int> onTap;
+
+  /// Number shown on the Cart tab; the badge is hidden when 0.
+  final int cartCount;
 
   @override
   Widget build(BuildContext context) {
@@ -40,20 +44,25 @@ class AppBottomNavBar extends StatelessWidget {
         selectedFontSize: 11,
         unselectedFontSize: 11,
         iconSize: 30,
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: AppStrings.home,
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.grid_view_outlined),
             label: AppStrings.categories,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket_outlined),
+            icon: Badge(
+              isLabelVisible: cartCount > 0,
+              backgroundColor: AppColors.logoOrange,
+              label: Text(cartCount > 99 ? '99+' : '$cartCount'),
+              child: const Icon(Icons.shopping_basket_outlined),
+            ),
             label: AppStrings.cart,
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.card_giftcard_outlined),
             label: AppStrings.wish,
           ),

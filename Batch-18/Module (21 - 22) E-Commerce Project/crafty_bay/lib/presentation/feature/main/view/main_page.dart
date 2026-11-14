@@ -1,9 +1,11 @@
 import 'package:crafty_bay/presentation/core/app_bottom_nav_bar.dart';
+import 'package:crafty_bay/presentation/feature/cart/provider/cart_provider.dart';
 import 'package:crafty_bay/presentation/feature/cart/view/cart_page.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/categories_page.dart';
 import 'package:crafty_bay/presentation/feature/home/view/home_page.dart';
 import 'package:crafty_bay/presentation/feature/wishlist/view/wishlist_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// App shell: hosts the four tabs and the shared [AppBottomNavBar].
 class MainPage extends StatefulWidget {
@@ -35,6 +37,7 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: AppBottomNavBar(
         currentIndex: _currentIndex,
         onTap: _onTabSelected,
+        cartCount: context.watch<CartProvider>().itemCount,
       ),
     );
   }

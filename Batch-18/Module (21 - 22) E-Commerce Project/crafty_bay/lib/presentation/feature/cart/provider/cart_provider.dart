@@ -10,6 +10,9 @@ class CartProvider extends ChangeNotifier {
 
   List<CartItemUiModel> get items => List.unmodifiable(_items);
 
+  /// Total units across all lines (shown on the Cart tab badge).
+  int get itemCount => _items.fold(0, (sum, item) => sum + item.quantity);
+
   double get total =>
       _items.fold(0, (sum, item) => sum + item.price * item.quantity);
 
