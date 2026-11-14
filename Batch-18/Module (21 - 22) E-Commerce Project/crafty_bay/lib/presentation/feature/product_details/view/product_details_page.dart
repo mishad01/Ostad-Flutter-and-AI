@@ -4,13 +4,16 @@ import 'package:crafty_bay/presentation/core/bottom_action_bar.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_button.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_price.dart';
 import 'package:crafty_bay/presentation/core/quantity_stepper.dart';
+import 'package:crafty_bay/presentation/feature/cart/provider/cart_provider.dart';
 import 'package:crafty_bay/presentation/feature/product_details/widgets/color_selector.dart';
 import 'package:crafty_bay/presentation/feature/product_details/widgets/product_image_carousel.dart';
 import 'package:crafty_bay/presentation/feature/product_details/widgets/product_rating_row.dart';
 import 'package:crafty_bay/presentation/feature/product_details/widgets/size_selector.dart';
 import 'package:crafty_bay/presentation/feature/reviews/view/reviews_page.dart';
+import 'package:crafty_bay/presentation/model/cart_item_ui_model.dart';
 import 'package:crafty_bay/presentation/model/product_details_ui_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Product photos, title, quantity, rating, colour/size pickers, description,
 /// and a bottom bar with the price and Add To Cart.
@@ -45,7 +48,22 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   void _onWishTap() => setState(() => _isWished = !_isWished);
 
   void _onAddToCart() {
-    // TODO: add to cart once the cart provider exists.
+    final product = widget.product;
+    final colorName = product.colorNames[_colorIndex];
+    final size = product.sizes[_sizeIndex];
+
+    context.read<CartProvider>().add(
+      CartItemUiModel(
+        title: product.title,
+        details: '${AppStrings.color}: $colorName, ${AppStrings.size}: $size',
+        price: product.price,
+        imagePath: product.imagePaths.first,
+        quantity: _quantity,
+      ),
+    );
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(const SnackBar(content: Text(AppStrings.addedToCart)));
   }
 
   @override

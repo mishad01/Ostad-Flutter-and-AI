@@ -2,6 +2,8 @@ import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
 import 'package:crafty_bay/presentation/core/category_card.dart';
 import 'package:crafty_bay/presentation/data/dummy_data.dart';
+import 'package:crafty_bay/presentation/feature/categories/view/category_products_page.dart';
+import 'package:crafty_bay/presentation/model/category_ui_model.dart';
 import 'package:flutter/material.dart';
 
 /// All categories in a 4-column grid under a titled app bar.
@@ -10,6 +12,15 @@ class CategoriesPage extends StatelessWidget {
 
   static const int _columns = 4;
   static const double _labelHeight = 28;
+
+  void _openCategory(BuildContext context, CategoryUiModel category) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => CategoryProductsPage(category: category),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +59,7 @@ class CategoriesPage extends StatelessWidget {
             icon: categories[i].icon,
             name: categories[i].name,
             size: tileSize,
+            onTap: () => _openCategory(context, categories[i]),
           ),
         ),
       ),

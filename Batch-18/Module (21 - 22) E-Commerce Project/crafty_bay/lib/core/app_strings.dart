@@ -77,6 +77,8 @@ class AppStrings {
   static const String size = 'Size';
   static const String description = 'Description';
 
+  static const String addedToCart = 'Added to cart';
+
   // --- Cart ---
   static const String cart = 'Cart';
   static const String currencySymbol = '\$';

@@ -112,6 +112,7 @@ class DummyData {
       AppColors.swatchGrey,
       AppColors.swatchDarkGrey,
     ],
+    colorNames: ['Black', 'Blue', 'Brown', 'Grey', 'Dark Grey'],
     sizes: ['S', 'M', 'L', 'XL'],
   );
 }

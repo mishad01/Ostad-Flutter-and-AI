@@ -10,10 +10,12 @@ class HomeCategorySection extends StatelessWidget {
     super.key,
     required this.categories,
     this.onSeeAllTap,
+    this.onCategoryTap,
   });
 
   final List<CategoryUiModel> categories;
   final VoidCallback? onSeeAllTap;
+  final ValueChanged<CategoryUiModel>? onCategoryTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class HomeCategorySection extends StatelessWidget {
                       icon: category.icon,
                       name: category.name,
                       size: tileSize,
+                      onTap: () => onCategoryTap?.call(category),
                     ),
                   ),
                 ),

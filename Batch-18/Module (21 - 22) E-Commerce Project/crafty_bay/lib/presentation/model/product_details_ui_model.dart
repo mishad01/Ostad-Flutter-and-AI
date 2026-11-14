@@ -9,6 +9,7 @@ class ProductDetailsUiModel {
     required this.description,
     required this.imagePaths,
     required this.colors,
+    required this.colorNames,
     required this.sizes,
   });
 
@@ -18,5 +19,8 @@ class ProductDetailsUiModel {
   final String description;
   final List<String> imagePaths;
   final List<Color> colors;
+
+  /// Display name of each entry in [colors], same order.
+  final List<String> colorNames;
   final List<String> sizes;
 }

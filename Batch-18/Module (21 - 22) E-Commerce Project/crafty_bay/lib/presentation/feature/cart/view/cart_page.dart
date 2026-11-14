@@ -3,38 +3,14 @@ import 'package:crafty_bay/core/app_strings.dart';
 import 'package:crafty_bay/presentation/core/bottom_action_bar.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_button.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_price.dart';
-import 'package:crafty_bay/presentation/data/dummy_data.dart';
+import 'package:crafty_bay/presentation/feature/cart/provider/cart_provider.dart';
 import 'package:crafty_bay/presentation/feature/cart/widgets/cart_item_card.dart';
-import 'package:crafty_bay/presentation/model/cart_item_ui_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Cart lines with quantity steppers and a bottom bar showing the total + Checkout.
-class CartPage extends StatefulWidget {
+class CartPage extends StatelessWidget {
   const CartPage({super.key});
-
-  @override
-  State<CartPage> createState() => _CartPageState();
-}
-
-class _CartPageState extends State<CartPage> {
-  late List<CartItemUiModel> _items;
-
-  @override
-  void initState() {
-    super.initState();
-    _items = List.of(DummyData.cartItems);
-  }
-
-  double get _total =>
-      _items.fold(0, (sum, item) => sum + item.price * item.quantity);
-
-  void _onQuantityChanged(int index, int quantity) {
-    setState(() => _items[index] = _items[index].copyWith(quantity: quantity));
-  }
-
-  void _onDelete(int index) {
-    setState(() => _items.removeAt(index));
-  }
 
   void _onCheckout() {
     // TODO: start checkout once the order flow exists.
@@ -53,6 +29,9 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = context.watch<CartProvider>();
+    final items = cart.items;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -71,10 +50,10 @@ class _CartPageState extends State<CartPage> {
       ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
-        itemCount: _items.length,
+        itemCount: items.length,
         separatorBuilder: (_, _) => const SizedBox(height: 12),
         itemBuilder: (_, i) {
-          final item = _items[i];
+          final item = items[i];
 
           return CartItemCard(
             image: AssetImage(item.imagePath),
@@ -83,19 +62,19 @@ class _CartPageState extends State<CartPage> {
             price:
                 '${AppStrings.currencySymbol}${item.price.toStringAsFixed(0)}',
             quantity: item.quantity,
-            onQuantityChanged: (q) => _onQuantityChanged(i, q),
-            onDelete: () => _onDelete(i),
+            onQuantityChanged: (q) => cart.setQuantity(i, q),
+            onDelete: () => cart.removeAt(i),
           );
         },
       ),
       bottomNavigationBar: BottomActionBar(
         leading: BottomBarPrice(
           label: AppStrings.totalPrice,
-          value: _formatMoney(_total),
+          value: _formatMoney(cart.total),
         ),
         action: BottomBarButton(
           label: AppStrings.checkout,
-          onPressed: _items.isEmpty ? null : _onCheckout,
+          onPressed: items.isEmpty ? null : _onCheckout,
         ),
       ),
     );
