@@ -9,25 +9,25 @@ import '../../../core/app_strings.dart';
 class CacheService {
   CacheService._();
 
-  static late SharedPreferences _prefs;
+  static late SharedPreferences _sharedPreferences;
 
   /// Loads the preferences instance. Must be awaited before any other call.
   static Future<void> init() async {
-    _prefs = await SharedPreferences.getInstance();
+    _sharedPreferences = await SharedPreferences.getInstance();
   }
 
   /// The cached bearer token, or `null` when the user is logged out.
-  static String? get accessToken => _prefs.getString(AppStrings.accessTokenCacheKey);
+  static String? get accessToken => _sharedPreferences.getString(AppStrings.accessTokenCacheKey);
 
   static bool get isLoggedIn => accessToken != null && accessToken!.isNotEmpty;
 
   /// Saves the bearer token received at login.
   static Future<void> saveAccessToken(String token) {
-    return _prefs.setString(AppStrings.accessTokenCacheKey, token);
+    return _sharedPreferences.setString(AppStrings.accessTokenCacheKey, token);
   }
 
   /// Removes the token (logout).
   static Future<void> clearAccessToken() {
-    return _prefs.remove(AppStrings.accessTokenCacheKey);
+    return _sharedPreferences.remove(AppStrings.accessTokenCacheKey);
   }
 }
