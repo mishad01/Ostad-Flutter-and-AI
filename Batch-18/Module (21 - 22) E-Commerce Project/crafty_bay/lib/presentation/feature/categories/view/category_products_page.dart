@@ -2,7 +2,7 @@ import 'package:crafty_bay/presentation/core/product_card.dart';
 import 'package:crafty_bay/presentation/core/product_grid_page.dart';
 import 'package:crafty_bay/presentation/data/dummy_data.dart';
 import 'package:crafty_bay/presentation/feature/product_details/view/product_details_page.dart';
-import 'package:crafty_bay/presentation/model/category_ui_model.dart';
+import 'package:crafty_bay/domain/entities/category.dart';
 import 'package:flutter/material.dart';
 
 /// Products of one category, opened by tapping a category tile.
@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 class CategoryProductsPage extends StatelessWidget {
   const CategoryProductsPage({super.key, required this.category});
 
-  final CategoryUiModel category;
+  final Category category;
 
   void _openDetails(BuildContext context) {
     Navigator.push(
@@ -28,7 +28,7 @@ class CategoryProductsPage extends StatelessWidget {
     final products = DummyData.products;
 
     return ProductGridPage(
-      title: category.name,
+      title: category.title,
       itemCount: products.length,
       itemBuilder: (_, i) => ProductCard(
         image: AssetImage(products[i].imagePath),

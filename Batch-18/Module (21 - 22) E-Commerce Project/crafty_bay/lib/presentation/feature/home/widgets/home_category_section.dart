@@ -1,7 +1,7 @@
 import 'package:crafty_bay/core/app_strings.dart';
 import 'package:crafty_bay/presentation/core/category_card.dart';
 import 'package:crafty_bay/presentation/core/section_header.dart';
-import 'package:crafty_bay/presentation/model/category_ui_model.dart';
+import 'package:crafty_bay/domain/entities/category.dart';
 import 'package:flutter/material.dart';
 
 /// "All Categories" header followed by a row of up to four category tiles.
@@ -13,9 +13,9 @@ class HomeCategorySection extends StatelessWidget {
     this.onCategoryTap,
   });
 
-  final List<CategoryUiModel> categories;
+  final List<Category> categories;
   final VoidCallback? onSeeAllTap;
-  final ValueChanged<CategoryUiModel>? onCategoryTap;
+  final ValueChanged<Category>? onCategoryTap;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class HomeCategorySection extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: CategoryCard(
-                      icon: category.icon,
-                      name: category.name,
+                      iconUrl: category.icon,
+                      name: category.title,
                       size: tileSize,
                       onTap: () => onCategoryTap?.call(category),
                     ),

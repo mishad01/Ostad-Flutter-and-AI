@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'core/app_colors.dart';
 import 'core/app_strings.dart';
 import 'data/service/cache/cache_service.dart';
+import 'presentation/feature/home/provider/brand_provider.dart';
 import 'presentation/feature/cart/provider/cart_provider.dart';
+import 'presentation/feature/categories/provider/category_provider.dart';
+import 'presentation/feature/home/provider/slide_provider.dart';
 import 'presentation/feature/splash/view/splash_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
   await CacheService.init();
   runApp(const CraftyBayApp());
 }
@@ -19,8 +24,13 @@ class CraftyBayApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CartProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => SlideProvider()),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => BrandProvider()),
+      ],
       child: MaterialApp(
         title: AppStrings.appName,
         debugShowCheckedModeBanner: false,

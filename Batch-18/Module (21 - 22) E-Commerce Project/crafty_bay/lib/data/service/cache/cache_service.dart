@@ -17,7 +17,8 @@ class CacheService {
   }
 
   /// The cached bearer token, or `null` when the user is logged out.
-  static String? get accessToken => _sharedPreferences.getString(AppStrings.accessTokenCacheKey);
+  static String? get accessToken =>
+      _sharedPreferences.getString(AppStrings.accessTokenCacheKey);
 
   static bool get isLoggedIn => accessToken != null && accessToken!.isNotEmpty;
 

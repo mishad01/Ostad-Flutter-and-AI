@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
     super.key,
-    required this.icon,
+    required this.iconUrl,
     required this.name,
     this.size = 50,
     this.onTap,
@@ -19,7 +19,8 @@ class CategoryCard extends StatelessWidget {
   static double tileSize(BuildContext context) =>
       (MediaQuery.sizeOf(context).width - 100) / 4;
 
-  final IconData icon;
+  /// Network image URL of the category icon.
+  final String iconUrl;
   final String name;
 
   /// Width and height of the icon box. Text is centred under it.
@@ -40,7 +41,16 @@ class CategoryCard extends StatelessWidget {
               color: AppColors.primaryLight,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: Icon(icon, size: 34, color: AppColors.primary),
+            padding: const EdgeInsets.all(12),
+            child: Image.network(
+              iconUrl,
+              fit: BoxFit.contain,
+              errorBuilder: (_, _, _) => const Icon(
+                Icons.image_not_supported_outlined,
+                size: 34,
+                color: AppColors.primary,
+              ),
+            ),
           ),
           const SizedBox(height: 6),
           SizedBox(

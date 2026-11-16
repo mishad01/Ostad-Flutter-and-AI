@@ -86,6 +86,8 @@ class AppStrings {
 
   static const String addedToCart = 'Added to cart';
 
+  static const String retry = 'Retry';
+
   // --- Cart ---
   static const String cart = 'Cart';
   static const String currencySymbol = '\$';

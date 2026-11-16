@@ -1,6 +1,9 @@
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
+import 'package:crafty_bay/domain/entities/category.dart';
 import 'package:crafty_bay/presentation/data/dummy_data.dart';
+import 'package:crafty_bay/presentation/feature/categories/provider/category_provider.dart';
+import 'package:crafty_bay/presentation/feature/home/provider/slide_provider.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/categories_page.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/category_products_page.dart';
 import 'package:crafty_bay/presentation/feature/home/widgets/home_app_bar.dart';
@@ -8,11 +11,26 @@ import 'package:crafty_bay/presentation/feature/home/widgets/home_banner_carouse
 import 'package:crafty_bay/presentation/feature/home/widgets/home_category_section.dart';
 import 'package:crafty_bay/presentation/feature/home/widgets/home_product_section.dart';
 import 'package:crafty_bay/presentation/feature/home/widgets/home_search_bar.dart';
-import 'package:crafty_bay/presentation/model/category_ui_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      if (!mounted) return;
+      Provider.of<SlideProvider>(context, listen: false).fetchSlides();
+      Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+    });
+  }
 
   void _openCategories(BuildContext context) {
     Navigator.push(
@@ -21,7 +39,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _openCategory(BuildContext context, CategoryUiModel category) {
+  void _openCategory(BuildContext context, Category category) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -44,10 +62,21 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 16),
             const HomeBannerCarousel(),
             const SizedBox(height: 20),
-            HomeCategorySection(
-              categories: DummyData.categories,
-              onSeeAllTap: () => _openCategories(context),
-              onCategoryTap: (c) => _openCategory(context, c),
+            Consumer<CategoryProvider>(
+              builder: (_, provider, _) {
+                if (provider.isLoading && provider.categories.isEmpty) {
+                  return const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                return HomeCategorySection(
+                  categories: provider.categories,
+                  onSeeAllTap: () => _openCategories(context),
+                  onCategoryTap: (c) => _openCategory(context, c),
+                );
+              },
             ),
             const SizedBox(height: 8),
             const HomeProductSection(

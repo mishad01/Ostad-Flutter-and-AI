@@ -1,19 +1,34 @@
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
+import 'package:crafty_bay/domain/entities/category.dart';
 import 'package:crafty_bay/presentation/core/category_card.dart';
-import 'package:crafty_bay/presentation/data/dummy_data.dart';
+import 'package:crafty_bay/presentation/feature/categories/provider/category_provider.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/category_products_page.dart';
-import 'package:crafty_bay/presentation/model/category_ui_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// All categories in a 4-column grid under a titled app bar.
-class CategoriesPage extends StatelessWidget {
+class CategoriesPage extends StatefulWidget {
   const CategoriesPage({super.key});
 
+  @override
+  State<CategoriesPage> createState() => _CategoriesPageState();
+}
+
+class _CategoriesPageState extends State<CategoriesPage> {
   static const int _columns = 4;
   static const double _labelHeight = 28;
 
-  void _openCategory(BuildContext context, CategoryUiModel category) {
+  @override
+  void initState() {
+    super.initState();
+    final provider = Provider.of<CategoryProvider>(context, listen: false);
+    if (provider.categories.isEmpty) {
+      Future.microtask(provider.fetchCategories);
+    }
+  }
+
+  void _openCategory(Category category) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -24,7 +39,6 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categories = DummyData.allCategories;
     final tileSize = CategoryCard.tileSize(context);
 
     return Scaffold(
@@ -43,25 +57,48 @@ class CategoriesPage extends StatelessWidget {
           ),
         ),
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(16),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: _columns,
-          mainAxisSpacing: 16,
-          mainAxisExtent: tileSize + _labelHeight,
-        ),
-        itemCount: categories.length,
-        // Tile keeps its size, centred in an equal quarter of the width, so
-        // spare space becomes spacing — same layout as the home row.
-        itemBuilder: (_, i) => Align(
-          alignment: Alignment.topCenter,
-          child: CategoryCard(
-            icon: categories[i].icon,
-            name: categories[i].name,
-            size: tileSize,
-            onTap: () => _openCategory(context, categories[i]),
-          ),
-        ),
+      body: Consumer<CategoryProvider>(
+        builder: (_, provider, _) {
+          if (provider.isLoading && provider.categories.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (provider.errorMessage.isNotEmpty && provider.categories.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(provider.errorMessage),
+                  TextButton(
+                    onPressed: provider.fetchCategories,
+                    child: const Text(AppStrings.retry),
+                  ),
+                ],
+              ),
+            );
+          }
+          final categories = provider.categories;
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: _columns,
+              mainAxisSpacing: 16,
+              mainAxisExtent: tileSize + _labelHeight,
+            ),
+            itemCount: categories.length,
+            // Tile keeps its size, centred in an equal quarter of the width, so
+            // spare space becomes spacing — same layout as the home row.
+            itemBuilder: (_, i) => Align(
+              alignment: Alignment.topCenter,
+              child: CategoryCard(
+                iconUrl: categories[i].icon,
+                name: categories[i].title,
+                size: tileSize,
+                onTap: () => _openCategory(categories[i]),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
