@@ -9,6 +9,13 @@ class AppStrings {
   // --- Network ---
   static const String baseUrl = 'https://ecom-rs8e.onrender.com/api/v1';
   static const String authorizationToken = '';
+  static const String accessTokenCacheKey = 'access_token';
+  static const String networkTimeoutError =
+      'Request timed out. Please try again.';
+  static const String networkNoInternetError =
+      'No internet connection. Please check your network.';
+  static const String networkUnexpectedError = 'Something went wrong';
+  static const String networkServerError = 'Server error';
 
   // --- Login ---
   static const String welcomeBack = 'Welcome Back';

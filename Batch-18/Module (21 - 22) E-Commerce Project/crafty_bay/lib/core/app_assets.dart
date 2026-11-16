@@ -8,3 +8,10 @@ class AppAssets {
   static const String logoNav = '$_images/logo_nav.svg';
   static const String shoe = '$_images/shoe.png';
 }
+
+/*
+const res = pm.response.json();
+if (res.status === "success") {
+    pm.collectionVariables.set("token", res.data.token);
+}
+ */

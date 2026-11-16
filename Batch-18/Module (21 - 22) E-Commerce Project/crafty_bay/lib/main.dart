@@ -4,10 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'core/app_colors.dart';
 import 'core/app_strings.dart';
+import 'data/service/cache/cache_service.dart';
 import 'presentation/feature/cart/provider/cart_provider.dart';
 import 'presentation/feature/splash/view/splash_page.dart';
 
-void main() => runApp(const CraftyBayApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheService.init();
+  runApp(const CraftyBayApp());
+}
 
 class CraftyBayApp extends StatelessWidget {
   const CraftyBayApp({super.key});
