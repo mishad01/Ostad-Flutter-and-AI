@@ -3,7 +3,11 @@ import 'package:crafty_bay/core/app_strings.dart';
 import 'package:crafty_bay/domain/entities/category.dart';
 import 'package:crafty_bay/presentation/data/dummy_data.dart';
 import 'package:crafty_bay/presentation/feature/categories/provider/category_provider.dart';
+import 'package:crafty_bay/presentation/feature/home/provider/brand_provider.dart';
+import 'package:crafty_bay/presentation/feature/home/provider/product_provider.dart';
 import 'package:crafty_bay/presentation/feature/home/provider/slide_provider.dart';
+import 'package:crafty_bay/presentation/feature/home/widgets/home_api_product_section.dart';
+import 'package:crafty_bay/presentation/feature/home/widgets/home_brand_section.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/categories_page.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/category_products_page.dart';
 import 'package:crafty_bay/presentation/feature/home/widgets/home_app_bar.dart';
@@ -29,6 +33,8 @@ class _HomePageState extends State<HomePage> {
       if (!mounted) return;
       Provider.of<SlideProvider>(context, listen: false).fetchSlides();
       Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+      Provider.of<BrandProvider>(context, listen: false).fetchBrands();
+      Provider.of<ProductProvider>(context, listen: false).fetchProducts();
     });
   }
 
@@ -79,13 +85,32 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             const SizedBox(height: 8),
-            const HomeProductSection(
-              title: AppStrings.popular,
-              products: DummyData.products,
+            Consumer<BrandProvider>(
+              builder: (_, provider, _) {
+                if (provider.isLoading && provider.brands.isEmpty) {
+                  return const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                return HomeBrandSection(brands: provider.brands);
+              },
             ),
-            const HomeProductSection(
-              title: AppStrings.special,
-              products: DummyData.products,
+            Consumer<ProductProvider>(
+              builder: (_, provider, _) {
+                if (provider.isLoading && provider.products.isEmpty) {
+                  return const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                return HomeApiProductSection(
+                  title: AppStrings.product,
+                  products: provider.products,
+                );
+              },
             ),
             const HomeProductSection(
               title: AppStrings.newArrival,

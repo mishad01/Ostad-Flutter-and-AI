@@ -57,8 +57,8 @@ class AppStrings {
   static const String search = 'Search';
   static const String seeAll = 'See All';
   static const String allCategories = 'All Categories';
-  static const String popular = 'Popular';
-  static const String special = 'Special';
+  static const String brand = 'Brand';
+  static const String product = 'Product';
   static const String newArrival = 'New';
 
   // --- Home ---

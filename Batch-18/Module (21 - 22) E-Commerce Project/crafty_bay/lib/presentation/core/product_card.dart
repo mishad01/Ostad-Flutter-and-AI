@@ -11,7 +11,7 @@ class ProductCard extends StatelessWidget {
     required this.image,
     required this.title,
     required this.price,
-    required this.rating,
+    this.rating,
     this.width,
     this.isWished = false,
     this.onTap,
@@ -21,7 +21,9 @@ class ProductCard extends StatelessWidget {
   final ImageProvider image;
   final String title;
   final String price;
-  final double rating;
+
+  /// Hidden when null (the products API has no rating yet).
+  final double? rating;
 
   /// Fixed width (e.g. in a horizontal list). Leave null inside a grid.
   final double? width;
@@ -98,20 +100,22 @@ class ProductCard extends StatelessWidget {
                                   color: AppColors.primary,
                                 ),
                               ),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.star,
-                                size: 16,
-                                color: AppColors.accent,
-                              ),
-                              const SizedBox(width: 2),
-                              Text(
-                                rating.toString(),
-                                style: const TextStyle(
-                                  fontSize: 11,
-                                  color: AppColors.textSecondary,
+                              if (rating != null) ...[
+                                const SizedBox(width: 10),
+                                const Icon(
+                                  Icons.star,
+                                  size: 16,
+                                  color: AppColors.accent,
                                 ),
-                              ),
+                                const SizedBox(width: 2),
+                                Text(
+                                  rating.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 11,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                              ],
                             ],
                           ),
                         ),

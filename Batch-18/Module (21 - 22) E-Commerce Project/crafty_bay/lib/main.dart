@@ -9,6 +9,7 @@ import 'data/service/cache/cache_service.dart';
 import 'presentation/feature/home/provider/brand_provider.dart';
 import 'presentation/feature/cart/provider/cart_provider.dart';
 import 'presentation/feature/categories/provider/category_provider.dart';
+import 'presentation/feature/home/provider/product_provider.dart';
 import 'presentation/feature/home/provider/slide_provider.dart';
 import 'presentation/feature/splash/view/splash_page.dart';
 
@@ -30,6 +31,7 @@ class CraftyBayApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SlideProvider()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => BrandProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: MaterialApp(
         title: AppStrings.appName,

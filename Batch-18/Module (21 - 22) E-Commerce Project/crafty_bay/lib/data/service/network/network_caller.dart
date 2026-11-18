@@ -15,7 +15,7 @@ import 'network_response.dart';
 /// no internet) into a [NetworkResponse]. It knows nothing about wger,
 /// entities or JSON shapes; that belongs to the feature services above it.
 class NetworkCaller {
-  static const Duration _timeout = Duration(seconds: 20);
+  static const Duration _timeout = Duration(seconds: 50);
 
   // Logger's default filter prints in debug builds only, so release builds stay silent.
   // No box borders or colors: they render as garbage in some consoles.
