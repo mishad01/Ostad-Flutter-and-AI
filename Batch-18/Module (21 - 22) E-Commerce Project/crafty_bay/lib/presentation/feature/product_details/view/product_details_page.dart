@@ -49,15 +49,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   void _onAddToCart() {
     final product = widget.product;
-    final colorName = product.colorNames[_colorIndex];
-    final size = product.sizes[_sizeIndex];
+    final variants = [
+      if (product.colorNames.isNotEmpty)
+        '${AppStrings.color}: ${product.colorNames[_colorIndex]}',
+      if (product.sizes.isNotEmpty)
+        '${AppStrings.size}: ${product.sizes[_sizeIndex]}',
+    ];
 
     context.read<CartProvider>().add(
       CartItemUiModel(
         title: product.title,
-        details: '${AppStrings.color}: $colorName, ${AppStrings.size}: $size',
+        details: variants.join(', '),
         price: product.price,
-        imagePath: product.imagePaths.first,
+        imagePath: product.imagePaths.isEmpty ? '' : product.imagePaths.first,
         quantity: _quantity,
       ),
     );
@@ -119,22 +123,26 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             onWishTap: _onWishTap,
           ),
           const SizedBox(height: 16),
-          const Text(AppStrings.color, style: _sectionStyle),
-          const SizedBox(height: 8),
-          ColorSelector(
-            colors: product.colors,
-            selectedIndex: _colorIndex,
-            onSelected: (i) => setState(() => _colorIndex = i),
-          ),
-          const SizedBox(height: 16),
-          const Text(AppStrings.size, style: _sectionStyle),
-          const SizedBox(height: 8),
-          SizeSelector(
-            sizes: product.sizes,
-            selectedIndex: _sizeIndex,
-            onSelected: (i) => setState(() => _sizeIndex = i),
-          ),
-          const SizedBox(height: 16),
+          if (product.colors.isNotEmpty) ...[
+            const Text(AppStrings.color, style: _sectionStyle),
+            const SizedBox(height: 8),
+            ColorSelector(
+              colors: product.colors,
+              selectedIndex: _colorIndex,
+              onSelected: (i) => setState(() => _colorIndex = i),
+            ),
+            const SizedBox(height: 16),
+          ],
+          if (product.sizes.isNotEmpty) ...[
+            const Text(AppStrings.size, style: _sectionStyle),
+            const SizedBox(height: 8),
+            SizeSelector(
+              sizes: product.sizes,
+              selectedIndex: _sizeIndex,
+              onSelected: (i) => setState(() => _sizeIndex = i),
+            ),
+            const SizedBox(height: 16),
+          ],
           const Text(AppStrings.description, style: _sectionStyle),
           const SizedBox(height: 8),
           Text(

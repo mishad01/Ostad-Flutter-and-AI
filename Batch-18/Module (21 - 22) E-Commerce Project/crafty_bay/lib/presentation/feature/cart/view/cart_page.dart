@@ -1,5 +1,6 @@
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
+import 'package:crafty_bay/presentation/core/image_source.dart';
 import 'package:crafty_bay/presentation/core/bottom_action_bar.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_button.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_price.dart';
@@ -56,7 +57,7 @@ class CartPage extends StatelessWidget {
           final item = items[i];
 
           return CartItemCard(
-            image: AssetImage(item.imagePath),
+            image: imageProviderFor(item.imagePath),
             title: item.title,
             details: item.details,
             price:

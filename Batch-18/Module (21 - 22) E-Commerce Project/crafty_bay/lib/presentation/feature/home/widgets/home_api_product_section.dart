@@ -3,8 +3,7 @@ import 'package:crafty_bay/domain/entities/product.dart';
 import 'package:crafty_bay/presentation/core/product_card.dart';
 import 'package:crafty_bay/presentation/core/product_grid_page.dart';
 import 'package:crafty_bay/presentation/core/product_section.dart';
-import 'package:crafty_bay/presentation/data/dummy_data.dart';
-import 'package:crafty_bay/presentation/feature/product_details/view/product_details_page.dart';
+import 'package:crafty_bay/presentation/feature/product_details/view/product_details_api_page.dart';
 import 'package:flutter/material.dart';
 
 /// Home row of API products, sized so three cards fit on screen.
@@ -19,13 +18,11 @@ class HomeApiProductSection extends StatelessWidget {
   final String title;
   final List<Product> products;
 
-  // Product details still use dummy data until that screen is wired to the API.
-  void _openDetails(BuildContext context) {
+  void _openDetails(BuildContext context, Product product) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) =>
-            const ProductDetailsPage(product: DummyData.productDetails),
+        builder: (_) => ProductDetailsApiPage(productId: product.id),
       ),
     );
   }
@@ -36,7 +33,7 @@ class HomeApiProductSection extends StatelessWidget {
       image: NetworkImage(p.photos.isNotEmpty ? p.photos.first : ''),
       title: p.title,
       price: '\$${p.currentPrice}',
-      onTap: () => _openDetails(context),
+      onTap: () => _openDetails(context, p),
     );
   }
 
