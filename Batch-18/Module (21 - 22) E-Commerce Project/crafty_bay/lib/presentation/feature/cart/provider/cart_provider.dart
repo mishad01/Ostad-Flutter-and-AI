@@ -26,6 +26,13 @@ class CartProvider extends ChangeNotifier {
     (sum, item) => sum + item.price.toDouble() * item.quantity,
   );
 
+  /// Forgets everything (logout), so the next user never sees these lines.
+  void clear() {
+    _items = [];
+    _errorMessage = '';
+    notifyListeners();
+  }
+
   Future<void> fetchCart() async {
     _isLoading = true;
     notifyListeners();

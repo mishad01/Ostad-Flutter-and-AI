@@ -5,8 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
 import '../../../core/app_strings.dart';
+import '../cache/cache_service.dart';
 import 'network_log_box.dart';
 import 'network_response.dart';
+import 'session_expired.dart';
 
 /// The only class in the app that talks to the `http` package.
 ///
@@ -36,7 +38,7 @@ class NetworkCaller {
     try {
       final response = await http.get(uri, headers: headers).timeout(_timeout);
       _logResponse('GET', response, stopwatch.elapsedMilliseconds);
-      return _toNetworkResponse(response);
+      return _toNetworkResponse(response, headers);
     } catch (e, stackTrace) {
       _logError(
         'GET',
@@ -66,7 +68,7 @@ class NetworkCaller {
           .post(uri, headers: requestHeaders, body: encodedBody)
           .timeout(_timeout);
       _logResponse('POST', response, stopwatch.elapsedMilliseconds);
-      return _toNetworkResponse(response);
+      return _toNetworkResponse(response, requestHeaders);
     } catch (e, stackTrace) {
       _logError(
         'POST',
@@ -112,7 +114,7 @@ class NetworkCaller {
       final streamed = await request.send().timeout(_timeout);
       final response = await http.Response.fromStream(streamed);
       _logResponse(method, response, stopwatch.elapsedMilliseconds);
-      return _toNetworkResponse(response);
+      return _toNetworkResponse(response, requestHeaders);
     } catch (e, stackTrace) {
       _logError(
         method,
@@ -147,16 +149,41 @@ class NetworkCaller {
     );
   }
 
-  NetworkResponse _toNetworkResponse(http.Response response) {
+  NetworkResponse _toNetworkResponse(
+    http.Response response,
+    Map<String, String>? requestHeaders,
+  ) {
     final isSuccess = response.statusCode >= 200 && response.statusCode < 300;
+    // A 401 on a request that carried a `token` header means the login is
+    // missing or expired. Login/OTP calls send no token, so their own
+    // "wrong password" 401 does not land here.
+    if (response.statusCode == 401 &&
+        (requestHeaders?.containsKey('token') ?? false)) {
+      CacheService.clearAccessToken();
+      SessionExpired.onExpired?.call();
+    }
+
     return NetworkResponse(
       isSuccess: isSuccess,
       statusCode: response.statusCode,
       body: response.body,
       errorMessage: isSuccess
           ? null
-          : '${AppStrings.networkServerError} ${response.statusCode}',
+          : _serverMessage(response.body) ??
+                '${AppStrings.networkServerError} ${response.statusCode}',
     );
+  }
+
+  /// The API answers errors as `{"msg": "..."}`; show that text when present.
+  String? _serverMessage(String body) {
+    try {
+      final json = jsonDecode(body);
+      final msg = json is Map ? json['msg'] : null;
+
+      return msg is String && msg.isNotEmpty ? msg : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   NetworkResponse _failure(String message) {

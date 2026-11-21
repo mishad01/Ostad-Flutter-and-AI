@@ -4,8 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'core/app_colors.dart';
+import 'core/app_navigator.dart';
 import 'core/app_strings.dart';
 import 'data/service/cache/cache_service.dart';
+import 'data/service/network/session_expired.dart';
+import 'presentation/feature/auth/auth_redirect.dart';
+import 'presentation/feature/auth/provider/auth_provider.dart';
 import 'presentation/feature/home/provider/brand_provider.dart';
 import 'presentation/feature/cart/provider/cart_provider.dart';
 import 'presentation/feature/categories/provider/category_provider.dart';
@@ -18,6 +22,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
   await CacheService.init();
+  // Any authenticated request that gets a 401 sends the user to login.
+  SessionExpired.onExpired = AuthRedirect.toLogin;
   runApp(const CraftyBayApp());
 }
 
@@ -28,6 +34,7 @@ class CraftyBayApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => WishlistProvider()),
         ChangeNotifierProvider(create: (_) => SlideProvider()),
@@ -36,6 +43,7 @@ class CraftyBayApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: MaterialApp(
+        navigatorKey: AppNavigator.key,
         title: AppStrings.appName,
         debugShowCheckedModeBanner: false,
         darkTheme: ThemeData.dark(),

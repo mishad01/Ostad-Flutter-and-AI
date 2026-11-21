@@ -20,12 +20,20 @@ class AppStrings {
   // --- Login ---
   static const String welcomeBack = 'Welcome Back';
   static const String enterEmailPrompt = 'Please Enter Your Email Address';
+  static const String signUpSubtitle = 'Create your account';
   static const String emailAddress = 'Email Address';
   static const String password = 'Password';
   static const String passwordRequired = 'Please enter your password';
   static const String passwordTooShort =
       'Password must be at least 6 characters';
   static const String next = 'Next';
+  static const String login = 'Login';
+  static const String signUp = 'Sign Up';
+  static const String createAccount = 'Create Account';
+  static const String noAccountPrompt = "Don't have an account? ";
+  static const String haveAccountPrompt = 'Already have an account? ';
+  static const String skip = 'Skip';
+  static const String loginRequired = 'Please log in to continue';
   static const String emailRequired = 'Please enter your email';
   static const String emailInvalid = 'Please enter a valid email';
 

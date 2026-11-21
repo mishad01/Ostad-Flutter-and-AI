@@ -19,6 +19,13 @@ class WishlistProvider extends ChangeNotifier {
   bool isWished(String productId) =>
       _items.any((e) => e.product.id == productId);
 
+  /// Forgets everything (logout), so the next user never sees these items.
+  void clear() {
+    _items = [];
+    _errorMessage = '';
+    notifyListeners();
+  }
+
   Future<void> fetchWishlist() async {
     _isLoading = true;
     notifyListeners();

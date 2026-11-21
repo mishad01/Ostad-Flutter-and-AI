@@ -2,7 +2,13 @@ import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
 import 'package:flutter/material.dart';
 
-import '../../otp_verfication/view/otp_verification_page.dart';
+import 'package:crafty_bay/presentation/feature/main/view/main_page.dart';
+import 'package:provider/provider.dart';
+
+import '../../auth_redirect.dart';
+import '../../auth_validators.dart';
+import '../../provider/auth_provider.dart';
+import '../../sign_up/view/sign_up_page.dart';
 import '../widgets/login_header.dart';
 
 class LoginPage extends StatefulWidget {
@@ -23,40 +29,46 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    // Lets the next 401 open the login page again.
+    AuthRedirect.reset();
     super.dispose();
-  }
-
-  String? _validateEmail(String? value) {
-    final email = value?.trim() ?? '';
-    if (email.isEmpty) return AppStrings.emailRequired;
-    if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) {
-      return AppStrings.emailInvalid;
-    }
-    return null;
-  }
-
-  String? _validatePassword(String? value) {
-    final password = value ?? '';
-    if (password.isEmpty) return AppStrings.passwordRequired;
-    if (password.length < 6) return AppStrings.passwordTooShort;
-    return null;
   }
 
   void _toggleObscure() {
     setState(() => _obscurePassword = !_obscurePassword);
   }
 
-  void _onNext() {
+  Future<void> _onLogin() async {
     if (!_formKey.currentState!.validate()) return;
-    // TODO: call login/OTP API once the auth provider exists.
+    final auth = context.read<AuthProvider>();
+    final ok = await auth.login(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+    if (!mounted) return;
+    if (!ok) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(auth.errorMessage)));
+      return;
+    }
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const MainPage()),
+      (_) => false,
+    );
+  }
+
+  void _onSignUp() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => const OtpVerificationPage()),
+      MaterialPageRoute(builder: (_) => const SignUpPage()),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = context.watch<AuthProvider>().isLoading;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -73,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
-                  validator: _validateEmail,
+                  validator: AuthValidators.email,
                   decoration: const InputDecoration(
                     hintText: AppStrings.emailAddress,
                   ),
@@ -83,8 +95,8 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _passwordController,
                   obscureText: _obscurePassword,
                   textInputAction: TextInputAction.done,
-                  validator: _validatePassword,
-                  onFieldSubmitted: (_) => _onNext(),
+                  validator: AuthValidators.password,
+                  onFieldSubmitted: (_) => _onLogin(),
                   decoration: InputDecoration(
                     hintText: AppStrings.password,
                     suffixIcon: IconButton(
@@ -100,8 +112,30 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: _onNext,
-                  child: const Text(AppStrings.next),
+                  onPressed: isLoading ? null : _onLogin,
+                  child: isLoading
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Text(AppStrings.login),
+                ),
+                const SizedBox(height: 8),
+                TextButton(
+                  onPressed: _onSignUp,
+                  child: const Text.rich(
+                    TextSpan(
+                      text: AppStrings.noAccountPrompt,
+                      style: TextStyle(color: AppColors.textSecondary),
+                      children: [
+                        TextSpan(
+                          text: AppStrings.signUp,
+                          style: TextStyle(color: AppColors.primary),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
