@@ -4,7 +4,9 @@ import 'package:crafty_bay/presentation/core/product_card.dart';
 import 'package:crafty_bay/presentation/core/product_grid_page.dart';
 import 'package:crafty_bay/presentation/core/product_section.dart';
 import 'package:crafty_bay/presentation/feature/product_details/view/product_details_api_page.dart';
+import 'package:crafty_bay/presentation/feature/wishlist/provider/wishlist_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Home row of API products, sized so three cards fit on screen.
 /// "See All" opens the full list in a [ProductGridPage].
@@ -27,13 +29,19 @@ class HomeApiProductSection extends StatelessWidget {
     );
   }
 
-  ProductCard _card(BuildContext context, Product p, {double? width}) {
-    return ProductCard(
-      width: width,
-      image: NetworkImage(p.photos.isNotEmpty ? p.photos.first : ''),
-      title: p.title,
-      price: '\$${p.currentPrice}',
-      onTap: () => _openDetails(context, p),
+  // Consumer (not context.watch) because this also runs inside the pushed
+  // "See All" route, where the section's own context is not building.
+  Widget _card(BuildContext context, Product p, {double? width}) {
+    return Consumer<WishlistProvider>(
+      builder: (context, wishlist, _) => ProductCard(
+        width: width,
+        image: NetworkImage(p.photos.isNotEmpty ? p.photos.first : ''),
+        title: p.title,
+        price: '\$${p.currentPrice}',
+        isWished: wishlist.isWished(p.id),
+        onTap: () => _openDetails(context, p),
+        onWishTap: () => wishlist.toggle(p.id),
+      ),
     );
   }
 

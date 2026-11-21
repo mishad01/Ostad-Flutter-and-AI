@@ -1,11 +1,13 @@
 import 'package:crafty_bay/core/app_colors.dart';
 import 'package:crafty_bay/core/app_strings.dart';
+import 'package:crafty_bay/domain/entities/cart_item.dart';
 import 'package:crafty_bay/presentation/core/image_source.dart';
 import 'package:crafty_bay/presentation/core/bottom_action_bar.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_button.dart';
 import 'package:crafty_bay/presentation/core/bottom_bar_price.dart';
 import 'package:crafty_bay/presentation/feature/cart/provider/cart_provider.dart';
 import 'package:crafty_bay/presentation/feature/cart/widgets/cart_item_card.dart';
+import 'package:crafty_bay/presentation/feature/cart/widgets/cart_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,10 +30,43 @@ class CartPage extends StatelessWidget {
     return '${AppStrings.currencySymbol}$whole.${parts[1]}';
   }
 
+  /// "Color: Red, Size: X"; empty when the line has no variant.
+  String _details(CartItem item) {
+    return [
+      if (item.color.isNotEmpty) '${AppStrings.color}: ${item.color}',
+      if (item.size.isNotEmpty) '${AppStrings.size}: ${item.size}',
+    ].join(', ');
+  }
+
+  void _showMessage(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  Future<void> _onQuantityChanged(
+    BuildContext context,
+    CartProvider cart,
+    CartItem item,
+    int quantity,
+  ) async {
+    final ok = await cart.setQuantity(item, quantity);
+    if (!ok && context.mounted) _showMessage(context, cart.errorMessage);
+  }
+
+  Future<void> _onDelete(
+    BuildContext context,
+    CartProvider cart,
+    CartItem item,
+  ) async {
+    final ok = await cart.remove(item);
+    if (!context.mounted) return;
+    _showMessage(context, ok ? AppStrings.removedFromCart : cart.errorMessage);
+  }
+
   @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartProvider>();
-    final items = cart.items;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -49,25 +84,28 @@ class CartPage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16),
-        itemCount: items.length,
-        separatorBuilder: (_, _) => const SizedBox(height: 12),
-        itemBuilder: (_, i) {
-          final item = items[i];
+      body: cart.items.isEmpty
+          ? CartPlaceholder(cart: cart)
+          : ListView.separated(
+              padding: const EdgeInsets.all(16),
+              itemCount: cart.items.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 12),
+              itemBuilder: (_, i) {
+                final item = cart.items[i];
 
-          return CartItemCard(
-            image: imageProviderFor(item.imagePath),
-            title: item.title,
-            details: item.details,
-            price:
-                '${AppStrings.currencySymbol}${item.price.toStringAsFixed(0)}',
-            quantity: item.quantity,
-            onQuantityChanged: (q) => cart.setQuantity(i, q),
-            onDelete: () => cart.removeAt(i),
-          );
-        },
-      ),
+                return CartItemCard(
+                  image: imageProviderFor(item.photo),
+                  title: item.title,
+                  details: _details(item),
+                  price:
+                      '${AppStrings.currencySymbol}${item.price.toStringAsFixed(0)}',
+                  quantity: item.quantity,
+                  onQuantityChanged: (q) =>
+                      _onQuantityChanged(context, cart, item, q),
+                  onDelete: () => _onDelete(context, cart, item),
+                );
+              },
+            ),
       bottomNavigationBar: BottomActionBar(
         leading: BottomBarPrice(
           label: AppStrings.totalPrice,
@@ -75,7 +113,7 @@ class CartPage extends StatelessWidget {
         ),
         action: BottomBarButton(
           label: AppStrings.checkout,
-          onPressed: items.isEmpty ? null : _onCheckout,
+          onPressed: cart.items.isEmpty ? null : _onCheckout,
         ),
       ),
     );

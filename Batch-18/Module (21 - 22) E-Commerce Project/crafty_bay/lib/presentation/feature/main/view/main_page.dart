@@ -3,6 +3,7 @@ import 'package:crafty_bay/presentation/feature/cart/provider/cart_provider.dart
 import 'package:crafty_bay/presentation/feature/cart/view/cart_page.dart';
 import 'package:crafty_bay/presentation/feature/categories/view/categories_page.dart';
 import 'package:crafty_bay/presentation/feature/home/view/home_page.dart';
+import 'package:crafty_bay/presentation/feature/wishlist/provider/wishlist_provider.dart';
 import 'package:crafty_bay/presentation/feature/wishlist/view/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,17 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Loaded once here so the cart badge and heart icons are right at launch.
+    Future.microtask(() {
+      if (!mounted) return;
+      context.read<CartProvider>().fetchCart();
+      context.read<WishlistProvider>().fetchWishlist();
+    });
+  }
 
   void _onTabSelected(int index) => setState(() => _currentIndex = index);
 

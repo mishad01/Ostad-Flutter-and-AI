@@ -1,6 +1,5 @@
 import 'package:crafty_bay/core/app_assets.dart';
 import 'package:crafty_bay/core/app_colors.dart';
-import 'package:crafty_bay/presentation/model/cart_item_ui_model.dart';
 import 'package:crafty_bay/presentation/model/product_details_ui_model.dart';
 import 'package:crafty_bay/presentation/model/product_ui_model.dart';
 import 'package:crafty_bay/presentation/model/review_ui_model.dart';
@@ -50,33 +49,6 @@ class DummyData {
       'Reference site about Lorem Ipsum, giving information on its origins, '
       'as well as a random Lipsum generator Reference site about Lorem Ipsum, '
       'giving information on its origins, as well as a random Lipsum generator';
-
-  static const List<CartItemUiModel> cartItems = [
-    CartItemUiModel(
-      title: 'New Year Special Shoe',
-      details: 'Color: Red, Size: X',
-      price: 100,
-      imagePath: AppAssets.shoe,
-    ),
-    CartItemUiModel(
-      title: 'New Year Special Shoe',
-      details: 'Color: Red, Size: X',
-      price: 100,
-      imagePath: AppAssets.shoe,
-    ),
-    CartItemUiModel(
-      title: 'New Year Special Shoe',
-      details: 'Color: Red, Size: X',
-      price: 100,
-      imagePath: AppAssets.shoe,
-    ),
-    CartItemUiModel(
-      title: 'New Year Special Shoe',
-      details: 'Color: Red, Size: X',
-      price: 100,
-      imagePath: AppAssets.shoe,
-    ),
-  ];
 
   /// Sample detail shown for any tapped product until the API is wired.
   static const ProductDetailsUiModel productDetails = ProductDetailsUiModel(

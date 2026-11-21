@@ -10,7 +10,7 @@ import 'package:crafty_bay/presentation/feature/product_details/widgets/product_
 import 'package:crafty_bay/presentation/feature/product_details/widgets/product_rating_row.dart';
 import 'package:crafty_bay/presentation/feature/product_details/widgets/size_selector.dart';
 import 'package:crafty_bay/presentation/feature/reviews/view/reviews_page.dart';
-import 'package:crafty_bay/presentation/model/cart_item_ui_model.dart';
+import 'package:crafty_bay/presentation/feature/wishlist/provider/wishlist_provider.dart';
 import 'package:crafty_bay/presentation/model/product_details_ui_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +36,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   int _quantity = 1;
   int _colorIndex = 0;
   int _sizeIndex = 0;
-  bool _isWished = false;
 
   void _onReviewsTap() {
     Navigator.push(
@@ -45,34 +44,45 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     );
   }
 
-  void _onWishTap() => setState(() => _isWished = !_isWished);
-
-  void _onAddToCart() {
-    final product = widget.product;
-    final variants = [
-      if (product.colorNames.isNotEmpty)
-        '${AppStrings.color}: ${product.colorNames[_colorIndex]}',
-      if (product.sizes.isNotEmpty)
-        '${AppStrings.size}: ${product.sizes[_sizeIndex]}',
-    ];
-
-    context.read<CartProvider>().add(
-      CartItemUiModel(
-        title: product.title,
-        details: variants.join(', '),
-        price: product.price,
-        imagePath: product.imagePaths.isEmpty ? '' : product.imagePaths.first,
-        quantity: _quantity,
-      ),
-    );
+  void _showMessage(String message) {
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
-      ..showSnackBar(const SnackBar(content: Text(AppStrings.addedToCart)));
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  Future<void> _onWishTap() async {
+    final wishlist = context.read<WishlistProvider>();
+    final wasWished = wishlist.isWished(widget.product.id);
+    final ok = await wishlist.toggle(widget.product.id);
+    if (!mounted) return;
+    _showMessage(
+      !ok
+          ? wishlist.errorMessage
+          : wasWished
+          ? AppStrings.removedFromWishlist
+          : AppStrings.addedToWishlist,
+    );
+  }
+
+  Future<void> _onAddToCart() async {
+    final product = widget.product;
+    final cart = context.read<CartProvider>();
+    final ok = await cart.add(
+      productId: product.id,
+      quantity: _quantity,
+      color: product.colorNames.isEmpty
+          ? null
+          : product.colorNames[_colorIndex],
+      size: product.sizes.isEmpty ? null : product.sizes[_sizeIndex],
+    );
+    if (!mounted) return;
+    _showMessage(ok ? AppStrings.addedToCart : cart.errorMessage);
   }
 
   @override
   Widget build(BuildContext context) {
     final product = widget.product;
+    final isWished = context.watch<WishlistProvider>().isWished(product.id);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -118,7 +128,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           const SizedBox(height: 8),
           ProductRatingRow(
             rating: product.rating,
-            isWished: _isWished,
+            isWished: isWished,
             onReviewsTap: _onReviewsTap,
             onWishTap: _onWishTap,
           ),
@@ -163,7 +173,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         ),
         action: BottomBarButton(
           label: AppStrings.addToCart,
-          onPressed: _onAddToCart,
+          onPressed: product.id.isEmpty ? null : _onAddToCart,
         ),
       ),
     );

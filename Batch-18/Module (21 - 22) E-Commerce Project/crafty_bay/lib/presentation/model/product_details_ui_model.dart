@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 /// Presentation-only product detail used by the Product Details page until the API is wired.
 class ProductDetailsUiModel {
   const ProductDetailsUiModel({
+    this.id = '',
     required this.title,
     required this.price,
     required this.rating,
@@ -14,6 +15,8 @@ class ProductDetailsUiModel {
     required this.sizes,
   });
 
+  /// API product id; empty for the dummy sample (cart/wishlist disabled).
+  final String id;
   final String title;
   final double price;
   final double rating;
@@ -28,6 +31,7 @@ class ProductDetailsUiModel {
   /// Builds the page model from API data. The API has no rating yet, so it is 0.
   factory ProductDetailsUiModel.fromEntity(ProductDetails p) {
     return ProductDetailsUiModel(
+      id: p.id,
       title: p.title,
       price: p.currentPrice.toDouble(),
       rating: 0,

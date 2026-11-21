@@ -85,10 +85,15 @@ class AppStrings {
   static const String description = 'Description';
 
   static const String addedToCart = 'Added to cart';
+  static const String addedToWishlist = 'Added to wish list';
+  static const String removedFromWishlist = 'Removed from wish list';
+  static const String removedFromCart = 'Removed from cart';
 
   static const String retry = 'Retry';
 
   // --- Cart ---
   static const String cart = 'Cart';
+  static const String cartEmpty = 'Your cart is empty';
+  static const String wishlistEmpty = 'Your wish list is empty';
   static const String currencySymbol = '\$';
 }

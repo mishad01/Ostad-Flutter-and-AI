@@ -12,6 +12,7 @@ import 'presentation/feature/categories/provider/category_provider.dart';
 import 'presentation/feature/home/provider/product_provider.dart';
 import 'presentation/feature/home/provider/slide_provider.dart';
 import 'presentation/feature/splash/view/splash_page.dart';
+import 'presentation/feature/wishlist/provider/wishlist_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class CraftyBayApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => WishlistProvider()),
         ChangeNotifierProvider(create: (_) => SlideProvider()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => BrandProvider()),

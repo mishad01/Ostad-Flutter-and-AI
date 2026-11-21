@@ -79,6 +79,52 @@ class NetworkCaller {
     }
   }
 
+  /// Sends a PATCH request to [uri] with [body] encoded as JSON.
+  Future<NetworkResponse> patch(
+    Uri uri, {
+    Map<String, String>? headers,
+    Map<String, dynamic>? body,
+  }) {
+    return _sendWithBody('PATCH', uri, headers: headers, body: body);
+  }
+
+  /// Sends a DELETE request to [uri].
+  Future<NetworkResponse> delete(Uri uri, {Map<String, String>? headers}) {
+    return _sendWithBody('DELETE', uri, headers: headers);
+  }
+
+  Future<NetworkResponse> _sendWithBody(
+    String method,
+    Uri uri, {
+    Map<String, String>? headers,
+    Map<String, dynamic>? body,
+  }) async {
+    final requestHeaders = {'Content-Type': 'application/json', ...?headers};
+    final encodedBody = body == null ? null : jsonEncode(body);
+    _logger.i(
+      NetworkLogBox.request(method, uri, requestHeaders, body: encodedBody),
+    );
+    final stopwatch = Stopwatch()..start();
+    try {
+      final request = http.Request(method, uri)
+        ..headers.addAll(requestHeaders)
+        ..body = encodedBody ?? '';
+      final streamed = await request.send().timeout(_timeout);
+      final response = await http.Response.fromStream(streamed);
+      _logResponse(method, response, stopwatch.elapsedMilliseconds);
+      return _toNetworkResponse(response);
+    } catch (e, stackTrace) {
+      _logError(
+        method,
+        uri,
+        '${AppStrings.networkUnexpectedError} ($e)',
+        stopwatch,
+      );
+      _logger.e('', stackTrace: stackTrace);
+      return _failure(AppStrings.networkUnexpectedError);
+    }
+  }
+
   void _logResponse(String method, http.Response response, int elapsedMs) {
     final message = NetworkLogBox.response(
       method: method,
